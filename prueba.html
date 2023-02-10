@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h2>HELLO WORLD</h2>
+
+<p>There is a hidden message</p>
+
+<p id="hiddenP" style="display:none">Hello JavaScript, my name is Camila!</p>
+
+<button type="button" onclick="showElement()"> Show it!</button>
+<button type="button2 " onclick="hideElement()">Hide it!</button>
+
+<script>
+    function showElement(){
+        document.getElementById("hiddenP").style.display = 'block';
+    }
+
+    function hideElement(){
+        document.getElementById("hiddenP").style.display = 'none';
+    }
+</script>
+
+
+</body>
+</html> 
