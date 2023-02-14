@@ -34,11 +34,6 @@ const user = {
 
 }; 
 
-console.log(user.registerFullDate);
-console.log(user.registerDay());
-console.log(user.registerMonth());
-console.log(user.registerYear());
-
 
 console.log('The user',user.userName, 'was registered on',
              user.registerMonth(),  user.registerDay(),
