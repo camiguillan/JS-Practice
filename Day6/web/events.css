@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(237, 174, 243);
+}
+
+
+h1{
+    color:rgb(151, 56, 72);
+    text-align: center;
+}
+
+.para {
+    color: black;
+    height: 50px;
+    background-color: rgb(231, 145, 159);
+    font-size: 25px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.button{
+    text-align: center;
+    background-color: rgb(126, 226, 240);
+    font-size: 30px;
+    margin-right: 0 auto;
+    justify-content: center;
+    
+}
+
+.cont{
+    position:absolute;
+    left: 35%;
+    margin: 0;
+}
+
+.button:hover {
+    background-color: rgb(98, 167, 189);
+    color: rgb(108, 26, 124);
+}
+
+.p{
+    color: black;
+    height: 50px;
+    font-size: 100px;
+    text-align: center;
+    font-family: cursive;
+
+}
+
