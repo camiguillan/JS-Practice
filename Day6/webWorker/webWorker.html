@@ -24,11 +24,14 @@
 
 
 <script>
+var work =  new Worker('demoWorker.js');
 function startWorker(){
-    var work =  new Worker("demoWorker.js");
-     work.postMessage(20); //passing data to the worker
-     work.onmessage = function(event){ //worker response
-      document.getElementById("result").innerHTML = event.data;
+    if(work == undefined){
+        work =  new Worker('demoWorker.js');
+    }
+    //work.postMessage(20); //passing data to the worker
+    work.onmessage = function(event){ //worker response
+        document.getElementById("result").innerHTML = event.data;
     };
    
 }
@@ -37,6 +40,7 @@ function startWorker(){
 function stopWorker() {
     work.terminate();
     work = undefined;
+    // document.getElementById("result").style.display = 'none';
   }
 
 </script>
