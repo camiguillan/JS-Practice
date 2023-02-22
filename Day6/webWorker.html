@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <body>
+        <h1>
+            TRYING WEB WORKERS
+        </h1>
+        <p class=" para"> 
+            Click the buttom to start and end Worker
+        </p>
+        <p>Count numbers: <output id="result"></output></p>
+        <div class="cont">
+            <button class = "button" onClick="startWorker()"> Start it </button>
+            <button class="button" onClick="stopWorker()"> Stop it</button>
+        </div>
+      
+
+    </body>
+    
+
+</html>
+
+
+
+
+<script>
+function startWorker(){
+    var work =  new Worker("demoWorker.js");
+     work.postMessage(20); //passing data to the worker
+     work.onmessage = function(event){ //worker response
+      document.getElementById("result").innerHTML = event.data;
+    };
+   
+}
+
+
+function stopWorker() {
+    work.terminate();
+    work = undefined;
+  }
+
+</script>
