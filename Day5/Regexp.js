@@ -1,5 +1,5 @@
 //MODIFIERS REGULAR EXPRESSIONS
-let text = "Hello world, my name is CAMILA";
+let text = "Hello world, my name is, CAMILA";
 let posMatch = text.search(/camila/i); //Using a regular expression to do an case-insensitive search
 console.log('Text',text, '\n', "The word camila starts at position:", posMatch);
 
