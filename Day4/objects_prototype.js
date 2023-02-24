@@ -4,8 +4,8 @@ const vehicle = {
 
 }
 
-const hasName = vehicle.hasOwnProperty('colour');
-console.log("Has object property 'name'?", hasName ? "Yes, it has it" : "No, it hasn't" );
+const hasColour = vehicle.hasOwnProperty('colour');
+console.log("Has object property 'colour'?", hasColour ? "Yes, it has it" : "No, it hasn't" );
 
 
 //Creating another object based on the one already created (prototype)

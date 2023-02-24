@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="webcss.css">
+    <script src="webjs.js"></script>
+    
+    <body>
+        <h1>
+            WORDS!
+        </h1>
+        <p > 
+        <div class=" para">
+            Enter something: <input class="input" id="phrase" type="text" size="20" onblur = "changeToUpperCase()">
+        
+            <input class="buS" type="button" id="but" onclick="submitPhrase()" value="Submit">
+        </div>
+            <br><br>
+        
+        </p>
+       
+        
+        <p1 id="show">
+            Showing phrase already submitted... 
+            <br><br>
+        </p1>
+
+        <div class="cont">
+            
+            
+            <p2 id="phrases">
+                
+                <br><br>
+            
+            </p2>
+            <br><br>
+            <input type="button" class = "button" onClick="showArr()" value="Show it! "> </input>
+            <button class="button" onClick="hideArr()"> Hide it!</button>
+        </div>
+       
+         
+        <p class="phrases"  id="demo" >
+            
+        </p>
+     
+
+    </body>
+    
+
+</html>

@@ -1,0 +1,83 @@
+body{
+    background-color: rgb(230, 197, 233);
+}
+
+h1{
+    color:rgb(87, 52, 88);
+    font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background-color: rgb(226, 152, 222);
+   
+    
+}
+
+.para {
+    color: black;
+    height: 50px;
+    font-size: 50px;
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input:hover {
+    background-color: rgb(232, 216, 241);
+    color: rgb(108, 26, 124);
+}
+
+.input{
+    width: 50%;
+    border: 3px solid rgb(68, 16, 59);
+    box-sizing: var(50px);
+    height: 50%;
+   
+   
+}
+
+.buS{
+    text-align: center;
+    background-color: rgb(240, 126, 230);
+    font-size: 25px;
+    margin-right: 0 auto;
+    justify-content: center;
+}
+
+p1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(88, 43, 79);
+    font-size: 25px;
+    
+    text-align: center;
+    
+}
+
+.cont{
+    position:absolute;
+    left: 35%;
+    margin: 0;
+}
+
+.button:hover {
+    background-color: rgb(160, 75, 154);
+    color: rgb(108, 26, 124);
+}
+
+
+
+
+.button{
+    text-align: center;
+    background-color: rgb(240, 126, 234);
+    font-size: 30px;
+    margin-right: 0 auto;
+    justify-content: center;
+}
+
+
+p2{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    
+}
