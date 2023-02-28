@@ -16,9 +16,9 @@ const winS = prompt("Enter the number of matches that you team won\n");
 const drawS = prompt("Enter the number of matches drawn by your team \n");
 const loseS = prompt("Enter the number of matches lost by your team \n");
 
-win = stringToNum(winS);
-draw = stringToNum(drawS);
-lose = stringToNum(loseS);
+var win = stringToNum(winS);
+var draw = stringToNum(drawS);
+var lose = stringToNum(loseS);
 
 matches = win + draw + lose; 
 
