@@ -24,6 +24,7 @@ function createLi(){
 function createCheck(){
     var check = document.createElement('input');
     check.type ="checkbox";
+    check.classList = "checkbox";
     return check;
 }
 

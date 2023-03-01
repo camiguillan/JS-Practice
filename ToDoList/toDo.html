@@ -4,26 +4,32 @@
     <script src="toDo.js"></script>
     
     <body>
-        <h1>
+        <h1 >
+            <section class = 'title'>
             TO DO LIST!
+        </section>
         </h1>
+        
         <p > 
         <div class= "addToDo">
         <input class="input" id="newToDo" type="text" size="20" 
             placeholder = 'Add something to do'>
         
-            <input class="buS" type="button" id="but" onclick="addToDo()" value="Add">
+            <input class="but" type="button" id="but" onclick="addToDo()" value="Add">
         </div>
-            <br><br>
+        
         
         </p>
-       
+        
+        <section class = "Todo">
        <ul id = "list">
         <li>
+            <label class="container"> 
             <input class="checkbox" type = "checkbox" id="check">
             Cook
+        </label>
         </li>
-           
+    </section>  
     
      
 
