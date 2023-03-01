@@ -8,12 +8,20 @@ function addToDo(){
 function insertToList(toDo){
     var item = createLi(toDo);
     var checkBox = createCheck();
+    var label = createLabel();
+    item.appendChild(label);
     item.appendChild(checkBox);
     item.appendChild(document.createTextNode(toDo));
     //createDelete(item);    
     document.getElementById("list").appendChild(item);
     
   
+}
+
+function createLabel(){
+    var label = document.createElement('label');
+    label.className = "container";
+    return label;
 }
 
 function createLi(){

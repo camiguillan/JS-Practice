@@ -3,7 +3,7 @@ body {
     margin: 4% auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     letter-spacing: 2px;
-    font-size: 35px;
+    font-size: 25px;
     background-color: rgb(251, 234, 248);
     align-items: center;
   }
@@ -14,7 +14,28 @@ body {
     padding-left: 65px;
     letter-spacing: 3px;
     font-size: 60px;    
+    padding-bottom: 0px;
+    
 }
+
+.info{
+  padding-top: 5px;
+}
+
+.personalInfo{
+  border: 1px solid #1f1a1a;
+  height: 20px;
+  font-size: 20px;
+   
+}
+
+.personalInfo:hover {
+  border: 1px solid #000000;
+  background-color: #f1ebeb52;
+
+}
+
+
 
 .Todo{
     padding: 0px 15px;
@@ -25,14 +46,14 @@ body {
   
   .input {
     border: 1px solid #ddd;
-    border-radius: 10px;
-    height: 50px;
+    border-radius: 15px;
+    height: 30px;
     width: 70%;
-    padding-right: 0px;
-    padding-top: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
     text-align: left;
     margin-right: 3px;
-    font-size: 2.5rem;
+    font-size: 25px;
     box-shadow: #0a0a0a;
     color: #000000;   
 
@@ -49,14 +70,13 @@ body {
     flex: 0 0 22%;
     margin: 0px 0;
     border: 1px solid #fff3f3;
-    width: 80px;
-    height: 50px;
-    font-size: 35px;
+    height: 40px;
+    font-size: 25px;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
     background-color: #e7b3df;
-    padding-top: 10px;
+    padding-top: 5px;
     text-align: center;
   }
 
