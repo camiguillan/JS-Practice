@@ -2,14 +2,14 @@ body {
     width: 550px;
     margin: 4% auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     font-size: 25px;
-    background-color: rgb(251, 234, 248);
+    background-color: rgb(227, 241, 242);
     align-items: center;
   }
 
   .title{
-    background-color: #d3a6f6;
+    background-color: #287c7c5f;
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
     padding-left: 65px;
     letter-spacing: 3px;
@@ -41,7 +41,7 @@ body {
     padding: 0px 15px;
     box-shadow: 0px 1px 4px 0px rgba(223, 149, 221, 0.2);
     border-radius: 20px;
-    background-color: #db8ce2;
+    background-color: #70b1bc;
   }
   
   .input {
@@ -61,7 +61,7 @@ body {
 
   .input:hover {
     border: 1px solid #000000;
-    background-color: #d4d4d452;
+    background-color: #ffffff8f;
  
   }
 
@@ -69,21 +69,22 @@ body {
   .but{
     flex: 0 0 22%;
     margin: 0px 0;
-    border: 1px solid #fff3f3;
+    border: 1px solid #5db5b1;
     height: 40px;
     font-size: 25px;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #e7b3df;
+    background-color: #5db5b1;
     padding-top: 5px;
     text-align: center;
   }
 
   .but:hover {
-    background-color: #d4b2db;
+    background-color: #28696f;
     box-shadow: 0px 1px 4px 0px rgba(32, 3, 46, 0.2);
-    border-color: #d6afe0;
+    border-color: #28696f;
+    color: #fff;
   }
 
 
@@ -100,6 +101,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    
   }
 
 
@@ -128,6 +130,50 @@ ul {
   padding: 0;
 }
 
+.butons{
+ padding-right: 1px;
+}
+
+.delete{
+  border: 1px solid #5db5b1;
+  height: 40px;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ed7373;
+  padding-top: 5px;
+  text-align: center;
+  transition: background .2s ease-in-out;
+}
+
+.delete:hover {
+  background-color: #e44949;
+  box-shadow: 0px 1px 4px 0px rgba(32, 3, 46, 0.2);
+  border-color: #e44949;
+  color: #ddd;
+}
+
+.edit{
+  margin-left: 0px;
+  border: 1px solid #5db5b1;
+  height: 40px;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #73edba;
+  padding-top: 5px;
+  text-align: center;
+  transition: background .2s ease-in-out;
+}
+
+.edit:hover {
+  background-color: #4a9476;
+  box-shadow: 0px 1px 4px 0px rgba(32, 3, 46, 0.2);
+  border-color: #3e8165;
+  color: #ddd;
+}
 
 
   
