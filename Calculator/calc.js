@@ -22,6 +22,7 @@ function start(){
     document.getElementById("button7").addEventListener("click", function(){addText("7")});
     document.getElementById("button8").addEventListener("click", function(){addText("8")});
     document.getElementById("button9").addEventListener("click", function(){addText("9")});
+    document.getElementById("button.").addEventListener("click", function(){addText(".")});
     document.getElementById("equal").addEventListener("click", function(){resolve()});
     document.getElementById("clear").addEventListener("click", function(){clear()});
  
@@ -46,7 +47,10 @@ function resolve(){
      catch(err){
         result = "SINTAX ERROR";
      }
-    
+
+     if(result == Infinity){
+        result = "∞";
+     }
     document.getElementById("input").innerHTML = result;
 }
 

@@ -85,24 +85,18 @@ body {
     box-shadow: 0px 1px 4px 0px rgba(32, 3, 46, 0.2);
     border-color: #d6afe0;
   }
-  /*
-  .checkbox {
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 70%;
-  }*/
+
 
   .list{
     list-style-type:none;
   }
+
   .container {
     padding-left: 0px;
     margin-bottom: 0px;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -113,8 +107,8 @@ body {
     background-color: #fff;
     margin: 15px;
     color: currentColor;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: 2px solid currentColor;
     border-radius: 60px;
   }

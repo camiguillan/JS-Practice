@@ -9,9 +9,12 @@ function insertToList(toDo){
     var item = createLi(toDo);
     var checkBox = createCheck();
     var label = createLabel();
+    
     item.appendChild(label);
-    item.appendChild(checkBox);
-    item.appendChild(document.createTextNode(toDo));
+    label.appendChild(checkBox);
+    label.appendChild(document.createTextNode(toDo));
+    
+    
     //createDelete(item);    
     document.getElementById("list").appendChild(item);
     
@@ -20,7 +23,7 @@ function insertToList(toDo){
 
 function createLabel(){
     var label = document.createElement('label');
-    label.className = "container";
+    label.classList = "container";
     return label;
 }
 
@@ -33,6 +36,7 @@ function createCheck(){
     var check = document.createElement('input');
     check.type ="checkbox";
     check.classList = "checkbox";
+    // check.id = "check";
     return check;
 }
 
