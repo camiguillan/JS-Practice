@@ -143,3 +143,8 @@ function searchChild(parent, c){
 //     var edit = searchChild(label, 'BUTTON');
 //     edit.appendChild(document.createTextNode('Save'));
 // }
+
+
+
+// when delete, delete also from local storage 
+// when edit, also edit from local storage
