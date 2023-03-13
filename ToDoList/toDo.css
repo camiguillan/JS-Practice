@@ -176,4 +176,27 @@ ul {
 }
 
 
+.save{
+  margin-left: 0px;
+  border: 1px solid #5db5b1;
+  height: 40px;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #737ded;
+  padding-top: 5px;
+  text-align: center;
+  transition: background .2s ease-in-out;
+}
+
+.save:hover {
+  background-color: #4a5e94;
+  box-shadow: 0px 1px 4px 0px rgba(32, 3, 46, 0.2);
+  border-color: #3e8165;
+  color: #ddd;
+}
+
+
+
   
