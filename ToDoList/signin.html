@@ -5,7 +5,7 @@
     
     <body>
     
-        <form action="action_page.php" >
+        <form onsubmit="return false">
             
               <h1 class="title">Sign in</h1>
 
@@ -14,14 +14,14 @@
 
             <div class="line"> 
               <label for="email"><b>Email/username</b></label>
-              <input class="input" type="text" placeholder="Enter Email\username" name="email" required>
+              <input class="input" type="text" placeholder="Enter Email\username" name="email" id="user" required>
               
             </div>
 
             <div class="line" >
 
               <label for="psw"><b>Password</b></label>
-              <input class="input" type="password" placeholder="Enter Password" name="psw" required>
+              <input class="input" type="password" placeholder="Enter Password" name="psw" id="psw" required>
             </div>
           
           
@@ -30,8 +30,8 @@
                 <button type="button" class="but">Cancel</button>
                 </a>
 
-                <a href="toDo.html">
-                <button type="submit" class="but">Sign in</button>
+                <!-- <a href="toDo.html"> -->
+                <button type="submit" class="but" onclick="signin()">Sign in</button>
               </a>
 
               </div>
