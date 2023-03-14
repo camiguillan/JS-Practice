@@ -5,11 +5,6 @@ var tasknum = 0;
     
     var keys = Object.keys(localStorage).filter(key=> key.includes('task')), i ;
  
-    // while(i--){
-    //     tasks.push(localStorage.getItem("keys[i]"));
-    //     document.getElementById('list').textContent = tasks;
-    // }
-
     for(i=0; i<keys.length; i++){
         var value = String(localStorage.getItem(keys[i]));
         console.log(value);
