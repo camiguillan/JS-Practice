@@ -19,8 +19,6 @@ function Uncontrol() {
     const text = document.createTextNode('You have submitted: Name:'+" " + name +' ' +'Email:'+ ' ' +email);
     p.appendChild(text);
     document.getElementById('div').appendChild(p);
-    
-
     }
 
   return (
