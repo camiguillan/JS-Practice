@@ -7,7 +7,7 @@ function Uncontrol() {
     
     const inputRefName = useRef(null);
     const inputRefEmail = useRef(null);
-    const messageRef = useRef(null);
+    //const messageRef = useRef(null);
 
     function handleSubmit(event) {
     event.preventDefault();
@@ -26,13 +26,14 @@ function Uncontrol() {
       <h1>Uncontrolled Component: please complete the form </h1>
       <form onSubmit={handleSubmit}>
         <label>Name :</label>
-        <input type="text" name="name" ref={inputRefName} required/>
+        <input type="text" name="name" ref={inputRefName} 
+         required/>
         
         <label>Email:</label>
         <input type="text" name="email" ref={inputRefEmail} required/>
         <button type="submit">Submit</button>
       </form>
-      <div id='div' ref={messageRef}></div>
+      <div id='div' ></div>
 
     </div>
   );
