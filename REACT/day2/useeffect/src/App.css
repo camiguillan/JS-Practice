@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.App {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #0077ff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #0055cc;
+}
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  background-color: #9ab0e6;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.dialog p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.box {
+  background-color: #002396;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
