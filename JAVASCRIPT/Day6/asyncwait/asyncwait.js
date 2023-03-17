@@ -5,15 +5,11 @@ async function fetchUserData(userId) {
   const userInfo = await response.json();
   const postInfo = await responsepost.json();
  
-
   let postUser= {
     user: userInfo,
     post: postInfo,
   }
-
-
   return postUser;
-
 }
 
 

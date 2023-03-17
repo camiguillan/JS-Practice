@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import './Animation';
+import AnimationExample from './Animation';
 
 function App() {
   const [count, setCount] = useState(0);
   const [showDialog, setShowDialog] = useState(false);
+ 
 
   useEffect(() => {
+   
     document.title = `You clicked ${count} times`;
     
     if (count === 20) {
@@ -16,8 +20,16 @@ function App() {
       return () => {
         document.title = "React App";
       }
-    }
+
+      }
+
   }, [count]);
+
+
+  function handleClick(){
+    setCount(count + 1);
+  
+  }
 
   const handleCloseDialog = () => {
     setShowDialog(false);
@@ -26,8 +38,9 @@ function App() {
 
   return (
     <div className='container'>
+      
       <p className='App'>You clicked {count} times</p>
-      <button className='button' onClick={() => setCount(count + 1)}>
+      <button className='button' onClick={() => handleClick()  }>
         Click me
       </button>
 
@@ -37,6 +50,8 @@ function App() {
           <button  className='button' onClick={handleCloseDialog}>Close</button>
         </div>
       )}
+
+    
     </div>
 
  

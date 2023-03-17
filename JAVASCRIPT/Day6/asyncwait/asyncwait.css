@@ -6,9 +6,10 @@ h1{
   }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(179, 230, 226);
-    
+  font-family: Arial, sans-serif;
+  background-color: rgb(179, 230, 226);
+
+ 
 
   }
 
@@ -26,16 +27,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    
+    align-items: center;
+  
   }
 
-  .div{
+  #cont{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: rgb(179, 230, 226);
-    padding-left: 50%;
+    flex-direction: column;    
+    background-color: rgb(179, 230, 226);    
   }
   
 
