@@ -1,11 +1,33 @@
 async function fetchUserData(userId) {
   let response;
-  response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
-  let responsepost = await fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`);
-  const userInfo = await response.json();
+  let responsepost;
+  let userInfo;
+
+  //One controller per fetch 
+  const controller1 = new AbortController();
+  const signal1 = controller1.signal;
+  const timeout1 = setTimeout(() => {
+    controller1.abort();
+  }, 2 * 60 * 1000); // 2 min timeout
+
+  //Getting user info 
+  response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {signal: signal1});
+  userInfo = await response.json();
+  clearTimeout(timeout1);
+
+  const controller2 = new AbortController();
+  const signal2 = controller2.signal;
+  const timeout2 = setTimeout(() => {
+    controller2.abort();
+  },  2 * 60 * 1000); // 2 min timeout
+
+
+  //Getting posts info 
+  responsepost = await fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`, {signal: signal2});
   const postInfo = await responsepost.json();
- 
-  let postUser= {
+  clearTimeout(timeout2);
+
+  let postUser = {
     user: userInfo,
     post: postInfo,
   }
@@ -14,6 +36,8 @@ async function fetchUserData(userId) {
 
 
 
+
+//////////////////////////////////////////////////////////////////
 async function displayUserData(userId) {
   try {
     const postUser = await fetchUserData(userId);
