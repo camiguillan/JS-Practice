@@ -17,14 +17,14 @@ function Receive(props) {
     
 
     }
-    else
-    return (
-      <div>
-      <p>Name: </p>
-      <p>Surname:</p>
-      <p>Post: </p>
-    </div>
-    )
+    // else
+    // return (
+    //   <div>
+    //   <p>Name: </p>
+    //   <p>Surname:</p>
+    //   <p>Post: </p>
+    // </div>
+    // )
   }
 
 

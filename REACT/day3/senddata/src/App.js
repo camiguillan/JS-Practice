@@ -28,7 +28,7 @@ function SendData() {
     event.preventDefault();
     saveData();
     console.log('Datos:', data);       
-    setShow(!showBool);
+    setShow(true);
 
   };
 
