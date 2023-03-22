@@ -9,12 +9,6 @@ function PhotoSearch() {
   const [showT, setShowTitle] = useState(false);
   const [butText, setButText] = useState('Show Titles');
  
-
-
-  // useEffect(() => {
-  //       searchAllPhotos();
-  //    }, []);
-
   function handleSearchChange(event) {
     setSearchQuery(event.target.value);
   }

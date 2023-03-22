@@ -6,6 +6,7 @@ async function fetchUserData(userId) {
   //One controller per fetch 
   const controller1 = new AbortController();
   const signal1 = controller1.signal;
+  
   const timeout1 = setTimeout(() => {
     controller1.abort();
   }, 2 * 60 * 1000); // 2 min timeout
