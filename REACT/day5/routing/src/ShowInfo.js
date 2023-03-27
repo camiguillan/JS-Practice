@@ -1,20 +1,27 @@
 import './App.css';
+import { useLocation, Link } from "react-router-dom";
+import './info.css';
 
+function Info(props) {
 
+  const location = useLocation();
+  const data = location.state;
+  console.log(data);
 
-function Info() {
   return (
-    <div className="App">
-      <h1>LOG IN </h1>
-      <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required></input>
-      
-      <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required></input>
+    <div>
+    {
+      data &&
 
-    <button type="submit">Login</button>
+      <div className='cont'>
+      <p>Name: {data.name}</p>
+      <p>Surname: {data.surname}</p>
+      <p>Age: {data.age}</p>
+      <p>Email: {data.email}</p>
+      </div>
+    }
    
-  </div>
+   </div>
   );
 }
 
