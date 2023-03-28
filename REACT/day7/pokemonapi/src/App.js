@@ -18,9 +18,7 @@ function App() {
   //creating the list where all the characters will be saved
   const [characters, setCharacters] = useState([]);
   const [pageInfo, setPageInfo] = useState({});
-  const [prevInfo, setprevInfo] = useState(null);
-  const [nextInfo, setnextInfo] = useState(null);
-
+  
   //useEffect to fetch api data only one time when it is rendered, passing []
   useEffect(() => {
     //getting all characters 
@@ -29,44 +27,39 @@ function App() {
       
   }, []);
 
-
   function getChars(url){
     axios
         .get(url)
         .then(response => {
           const getChars = response.data.results;
-          console.log(getChars);
-          setCharacters(getChars)
-          console.log(characters);
+          // console.log(getChars);
           setPageInfo(response.data.info);
-          setnextInfo(pageInfo.next);
-          console.log(pageInfo.next)
+          // console.log(characters);
+         
+          setCharacters(getChars);
+          // console.log(nextInfo);
+          // console.log(pageInfo.next);
         })
         .catch(error => console.log(error));  
 
   }
 
-  function next(){
-    setnextInfo(pageInfo.next);
-    setprevInfo(pageInfo.prev);
-    getChars(nextInfo);
-
+  function next() {
+    getChars(pageInfo.next);
   }
+  
 
-  function previous(){
-    setprevInfo(pageInfo.prev);
-
-    getChars(prevInfo);
-
-}
+  function previous() {
+    getChars(pageInfo.prev);
+  }
 
   return (
     <>
 
       <header className="header">  RICK AND MORTY  
       <nav>
-           {  prevInfo  ? (<button onClick={previous} >Previous</button>)  : null }
-           { nextInfo ? (<button onClick={next} >Next</button>)  : null }
+          <button onClick={previous} >Previous</button>
+          <button onClick={next} >Next</button>
         </nav>
       
       
