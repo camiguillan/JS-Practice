@@ -53,22 +53,50 @@ function App() {
     getChars(pageInfo.prev);
   }
 
+  
+
+
+  function showFilteredChars(event){
+    var url;
+    switch(event.target.value){
+      
+      case 'All': { url = "https://rickandmortyapi.com/api/character";
+      getChars(url);}
+        break;
+      
+        case 'Rick':{ url = 'https://rickandmortyapi.com/api/character/?name=rick';
+                     getChars(url);}
+        break;
+
+        case 'Morty' : { url = 'https://rickandmortyapi.com/api/character/?name=morty';
+        getChars(url);}
+
+        break;
+
+
+    }
+
+  }
+
   return (
     <>
 
-      <header className="header">  RICK AND MORTY  
+      <header className="header">  
+      <h1>  RICK AND MORTY </h1>  
       <nav>
-          <button onClick={previous} >Previous</button>
+          <button  onClick={previous} >Previous</button>
           <button onClick={next} >Next</button>
+          <select className='select' onChange={showFilteredChars} >
+          <option key= '3' >  All </option>
+            <option key= '1' >  Rick </option>
+            <option key= '2' >  Morty </option>
+            
+          </select>
         </nav>
-      
-      
       </header>
+
        <div className="App">
         <Characters char={characters}></Characters>
-
-    
-
       </div>  
     
     

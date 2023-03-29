@@ -27,9 +27,9 @@ return (
                     <img src={char.image} alt='' ></img>
                     <div className="cinfo">
                         <h5> {char.name} </h5>
-                        <p>Species: {char.species} </p>
-                        <p>Origin: {char.origin.name} </p>
-                        <p>Location: {char.location.name}</p>
+                        <p>  <b> Species:</b> {char.species} </p>
+                        <p><b> Origin:</b>  {char.origin.name} </p>
+                        <p> <b> Location: </b>   {char.location.name}</p>
                     </div>
                 
                  </div>
