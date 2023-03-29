@@ -10,8 +10,6 @@ body {
   background: #186455;
   color: rgb(220, 232, 227);
   font-size: 25px;
-  
-  
 }
 
 
@@ -40,21 +38,24 @@ button {
   }
 
 
-
+/* 
   * {
     box-sizing: border-box;
-  }
+  } */
 
   
   /* Float three columns side by side */
   .column {
+    box-sizing: border-box;
     float: left;
     width: 33.3%;
-    padding: 10px 10px;
+    padding: 15px 15px;
   }
   
   /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
+  .row {
+    margin: 0 5px;
+  }
   
   /* Clear floats after the columns */
   .row:after {
