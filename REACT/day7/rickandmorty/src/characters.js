@@ -22,7 +22,7 @@ function Characters(props){
 
     function handleClick(e){
         // <Link to = '/profile' ></Link>
-        navigate('/profile', {state: e.currentTarget.id});
+        navigate( "/characters/"+ e.currentTarget.id , {state: e.currentTarget.id});
         console.log(e.currentTarget.id);
         //<Navigate to='/profile'></Navigate>
     }
@@ -35,7 +35,7 @@ return (
        {
         characters.map(
            ( char, index) => 
-           <div key={index}className="column">
+           <div key={index} className="column">
                 <div  className="card"   id={char.id.toString()}  onClick={handleClick}  >
                     <img src={char.image} alt='' ></img>
                     <div className="cinfo" >

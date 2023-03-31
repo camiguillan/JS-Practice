@@ -1,0 +1,55 @@
+
+.divProfile{
+    border-color: rgb(20, 20, 18);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    text-align: left;
+    background-color: #b3ccbd;
+    border-radius: 10px;
+    width: 55%;
+    margin: 3% 25%; 
+}
+
+
+.linkProfile{
+    color: rgb(191, 219, 209);
+    background-color: rgb(41, 91, 70);
+    font-size: 15px;
+    margin: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    box-sizing: border-box;
+    
+}
+
+
+.linkProfile:hover{
+    color: rgb(246, 247, 247);
+    background-color: rgb(77, 145, 116);
+}
+
+.h1Profile{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    color: rgb(25, 34, 29);
+}
+
+.profile{
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+}
+
+.infoP{
+    font-size: 22px;
+    margin: 5px;
+    width: 160%;
+    box-sizing: border-box;
+}
+
+
+.imgP:hover {
+    box-shadow: 0 0 2px 1px rgba(16, 16, 16, 0.5);
+   
+  }

@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import Profile from './profile';
 import CharacterCards from './characterCards';
 import Home from './Home';
+import Episodes from './episodes';
 
 
 /* character = {
@@ -23,8 +24,12 @@ function App() {
     <>     
       <Routes>
       <Route path="/" element= {<Home />} />
-      <Route path='/characters' element= {<CharacterCards />} />
-      <Route path="/profile" element={<Profile />} /> 
+      <Route path='/characters' element= {<CharacterCards />} >
+     
+      </Route>
+      <Route path="/characters/:id" element={<Profile />} /> 
+      
+      {/* <Route path="/characters/profile/episodes" element={<Episodes />} />  */}
     </Routes>
    
     
