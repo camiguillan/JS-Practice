@@ -1,0 +1,37 @@
+.div-container{
+    align-items: center;
+    width: 100%;
+}
+
+.htitle{
+    margin: 0 35% 0 35%;
+    color: rgb(48, 81, 63);
+    width: auto;
+    background-color: azure;
+    text-align: center;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.divep{
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 25% 15% 5%;
+    column-gap: 2px;
+    box-sizing: border-box;
+    margin: 0 30% ;
+    width: 100%;
+}
+
+.infoep{
+    font-size: 22px;
+    padding: 2%;
+    margin: 5%;
+    width: 160%;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: rgb(63, 80, 74);
+    border-radius: 2%;
+    color: rgb(240, 255, 246);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
