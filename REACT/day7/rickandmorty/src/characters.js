@@ -1,11 +1,12 @@
 import React from "react";
 import Profile from "./profile";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, useParams } from "react-router-dom";
 
 
 function Characters(props){
     const characters = props.char;
     const navigate = useNavigate();
+    const charId = useParams();
 
     const ShowChars = () => {
         characters.map(
@@ -22,8 +23,9 @@ function Characters(props){
 
     function handleClick(e){
         // <Link to = '/profile' ></Link>
+        console.log(  'using params', charId.id, charId);
         navigate( "/characters/"+ e.currentTarget.id , {state: e.currentTarget.id});
-        console.log(e.currentTarget.id);
+       
         //<Navigate to='/profile'></Navigate>
     }
 

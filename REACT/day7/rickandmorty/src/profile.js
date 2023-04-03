@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './Profile.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { Oval } from  'react-loader-spinner';
 
 
@@ -28,12 +28,14 @@ function Profile() {
     const location = useLocation();
     const data = location.state;
     const navigate = useNavigate();
+    const charId = useParams();
     //const [butText, setButText] = useState('Show Episodes details');
-    console.log(data);
+    //console.log(data);
 
     useEffect( () => {
-        const url = "https://rickandmortyapi.com/api/character/" + data;
-        console.log(url);
+      console.log('usingParams in profile', charId.id)
+        const url = "https://rickandmortyapi.com/api/character/" + charId.id;
+        //console.log(url);
         getChar(url);
         //allEpisodes();
           
@@ -63,10 +65,10 @@ function Profile() {
               });
               setIsLoading(false);
              //console.log(currentC);
-             console.log(currentC);
-             console.log(getC);
-             console.log(currentC.location);
-             console.log(currentC.location.name);
+            //  console.log(currentC);
+            //  console.log(getC);
+            //  console.log(currentC.location);
+            //  console.log(currentC.location.name);
             })
             .catch(error => console.log(error));  
     
