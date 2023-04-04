@@ -6,8 +6,7 @@ import { Oval } from  'react-loader-spinner';
 
 
 export default function Episodes() {
-  var [episodes, setEpisodes] = useState([]);
-  
+  var [episodes, setEpisodes] = useState([]);  
   const [isloading, setisloading] = useState(true);
   const location = useLocation();
   const data = location.state;
@@ -25,18 +24,33 @@ export default function Episodes() {
     episode: []
 });
 
-  useEffect(() => {
-      getData();
-  }, []);
+useEffect(() => {
+  getData();
+}, []);
+
+useEffect(() => {
+  if (currentC !== undefined && currentC.episode !== undefined) {
+    fetchEpisodes();
+  }
+}, [currentC]);
+
+useEffect(() => {
+  if (currentC !== undefined && episodes !== undefined) {
+    setisloading(false);
+  }
+}, [episodes]);
+
 
   async function getData(){
-    await fetchChar();
-    await fetchEpisodes();
+    await fetchChar();    
+    if (currentC != undefined && currentC.episode != undefined){
+      await fetchEpisodes();
+    }
     if (currentC != undefined && episodes != undefined){
       setisloading(false);
     }
   };
-
+  
   async function fetchChar(){
     const url = "https://rickandmortyapi.com/api/character/" + charId.id;
     await  getChar(url);
@@ -47,8 +61,7 @@ export default function Episodes() {
     await  axios
          .get(url)
          .then( response  => {
-           const getC =  response.data;      
-           //console.log(response);       
+           const getC =  response.data;           
            setCurrentC({
              id: getC.id,
              name:getC.name,
@@ -66,12 +79,9 @@ export default function Episodes() {
              episode: getC.episode
              
            });
-           //console.log(getC.episode);
-          //  setEpsID(getC.episode.map(ep =>{
-          //   var parts = ep.split("/");
-          //   return parts[parts.length - 1 ].join(",");
-          //   } ));
-                        
+
+                      
+           
          })
         
          .catch(error => console.log(error));  
@@ -86,42 +96,38 @@ export default function Episodes() {
    
   }
 
-  async function getEpisode(url) {
-    var getE = null;
-        await axios
-        .get(url)
-        .then( response  => {
-          getE =  response.data;  
-          // console.log(response.data);  
-          // console.log(getE);  
-              })
-        .catch(error => console.log(error)); 
-       
-        // console.log(url);
-        //console.log(getE);  
-        return getE;
-  }
+  // async function getEpisode(url) {
+  //   var getE = null;
+  //       await axios
+  //       .get(url)
+  //       .then( response  => {
+  //         getE =  response.data;  
+  //             })
+  //       .catch(error => console.log(error)); 
 
-  async function getEpisodes(ids){
-    var idstring = ids.join().toString();
-    // console.log(ids.join(), ids.join().typeOf());
+  //       return getE;
+  // }
+
+  async function getEpisodes(ids) {
+    var idstring = ids.join();
+
     var url =  "https://rickandmortyapi.com/api/episode/" + idstring;
-    var getE = null;
+    console.log(url);
+    var getE = [];
     await axios
       .get(url)
-      .then( response  => {
-        getE =  response.data;  
-        console.log(response.data);  
-        // console.log(getE);  
-            })
-      .catch(error => console.log(error)); 
-    
-    //console.log(url);
-    //console.log(getE);  
-    //console.log(idstring);
-    return getE; //list 
-    
+      .then( response  => {        
+        if(ids.length == 1){          
+          getE.push(response.data); // extract episodes array from response                    
+        }else{
+          getE = response.data; // extract episodes array from response
+        }
+      })
+      .catch(error => console.log(error));
+    console.log(getE);
+    return getE; // return episodes array
   }
+  
 
   async function allEpisodes() {
     var allurleps = currentC.episode.map(ep => {
@@ -129,25 +135,27 @@ export default function Episodes() {
         return url[url.length -1];
     });
     
-    console.log(allurleps, 'line 140');
-    console.log('line 95', allurleps);
+    console.log(allurleps, 'line 140');    
+    // console.log('line 95', allurleps);
     const eps = await getEpisodes(allurleps);
     return eps;
   }
   
+  var showEps = null;
+  if(episodes.length > 0){
+    showEps = episodes.map(ep => {    
+      return (
+        <div key={ep.id} className='divep' >
+          <ul className='infoep' >
+            <li>Episode: {ep.episode}</li>
+            <li>Episode Name: {ep.name}</li>
+            <li>Episode airdate: {ep.air_date}</li>
+          </ul>
+        </div>
+      );
+    });
+  }
 
-  const showEps = episodes.map(ep => {
-    console.log('Rendering episode:', ep);
-    return (
-      <div key={ep.id} className='divep' >
-        <ul className='infoep' >
-          <li>Episode: {ep.episode}</li>
-          <li>Episode Name: {ep.name}</li>
-          <li>Episode airdate: {ep.air_date}</li>
-        </ul>
-      </div>
-    );
-  });
 
 
   return (
