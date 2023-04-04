@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './Profile.css';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams, Route } from 'react-router-dom';
 import { Oval } from  'react-loader-spinner';
 
 
@@ -25,8 +25,6 @@ function Profile() {
         episode: []
     });
     const [isLoading, setIsLoading]  = useState(true);
-    const location = useLocation();
-    const data = location.state;
     const navigate = useNavigate();
     const charId = useParams();
     //const [butText, setButText] = useState('Show Episodes details');
@@ -70,7 +68,10 @@ function Profile() {
             //  console.log(currentC.location);
             //  console.log(currentC.location.name);
             })
-            .catch(error => console.log(error));  
+            .catch(error =>{ console.log(error);
+               navigate("/");
+              
+              });  
     
       }
 

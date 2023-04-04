@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { Route, Routes, Link  } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";  
+import { Route, Routes, Link, Navigate} from "react-router-dom";
+import { BrowserRouter, Redirect } from "react-router-dom";  
 
 import Profile from './profile';
 import CharacterCards from './characterCards';
@@ -23,12 +23,16 @@ function App() {
   return (
     <>     
       <Routes>
-      <Route path="*" element= {<Home />} /> 
+     
+   
       <Route path='/characters' element= {<CharacterCards />} >
      
       </Route>
       <Route path="/characters/:id" element={<Profile />} />       
        <Route path="/characters/:id/episodes" element={<Episodes />} />  
+
+       <Route path="/" element= {<Home />} /> 
+       <Route path='*' element={ <Navigate to="/" /> }/>
     </Routes>
    
     

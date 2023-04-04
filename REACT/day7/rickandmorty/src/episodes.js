@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
 import './episodes.css';
 import { Oval } from  'react-loader-spinner';
 
 
 export default function Episodes() {
-  var [episodes, setEpisodes] = useState([]);  
+  const [episodes, setEpisodes] = useState([]);  
   const [isloading, setisloading] = useState(true);
-  const location = useLocation();
-  const data = location.state;
   const charId = useParams();
+  const navigate = useNavigate();
   const [currentC, setCurrentC] = useState({
     id:'',
     name:'',
@@ -25,37 +24,32 @@ export default function Episodes() {
 });
 
 useEffect(() => {
-  getData();
+  const url = "https://rickandmortyapi.com/api/character/" + charId.id;
+  getData(url);
+  
 }, []);
 
 useEffect(() => {
-  if (currentC !== undefined && currentC.episode !== undefined) {
+  if (currentC !== undefined && currentC.episode !== undefined ) {
     fetchEpisodes();
   }
 }, [currentC]);
 
-useEffect(() => {
-  if (currentC !== undefined && episodes !== undefined) {
-    setisloading(false);
-  }
-}, [episodes]);
+// useEffect(() => {
+//   if (currentC !== undefined && episodes !== undefined) {
+//     setisloading(false);
+//   }
+// }, [episodes]);
 
 
-  async function getData(){
-    await fetchChar();    
-    if (currentC != undefined && currentC.episode != undefined){
-      await fetchEpisodes();
-    }
-    if (currentC != undefined && episodes != undefined){
-      setisloading(false);
-    }
+  async function getData(url){
+    await getChar(url);  
+    // if (currentC != undefined && currentC.episode != undefined){
+    //   await fetchEpisodes();
+    // }
+
   };
   
-  async function fetchChar(){
-    const url = "https://rickandmortyapi.com/api/character/" + charId.id;
-    await  getChar(url);
-
-  }
 
   async function getChar(url){
     await  axios
@@ -84,7 +78,11 @@ useEffect(() => {
            
          })
         
-         .catch(error => console.log(error));  
+         .catch(error =>{ console.log(error);
+          setisloading(true);
+          navigate("/");
+         
+         });  
  
    }
 
@@ -93,6 +91,7 @@ useEffect(() => {
  
     const eps = await allEpisodes();
     setEpisodes(eps);
+    setisloading(false);
    
   }
 
@@ -160,18 +159,24 @@ useEffect(() => {
 
   return (
     <>
-   { isloading?
+   { (isloading && currentC.episode.length == 0) ?
    <div className='oval'> 
    <Oval className='loader' />
    </div>
+
    :
-   <div className='div-container' >
+
+  
+    <div className='div-container' >
       <Link  className='linkChar' to="/">Go home</Link>
       <Link  className='linkChar' to={"/characters/" + currentC.id  } state = {currentC} >Go back</Link>
       <h1 className='htitle'  >{currentC.name}: All episodes</h1>
       
       {episodes.length > 0 && showEps}
-    </div>}
+    </div>
+  
+    
+    }
     </>
   );
 }
