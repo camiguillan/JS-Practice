@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
+//import './App.css';
+import './appstyles.scss';
 import { Route, Routes, Link, Navigate} from "react-router-dom";
-import { BrowserRouter, Redirect } from "react-router-dom";  
 import Pagination from './pagination';
 import Profile from './coponents/profile';
 import CharacterCards from './coponents/characterCards';

@@ -1,5 +1,4 @@
 import React from "react";
-import Profile from "./profile";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
 
 

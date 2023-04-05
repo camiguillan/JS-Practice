@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 //import './Profile.css';
-import './appstyles.scss';
+import '../appstyles.scss';
 import { Navigate, useNavigate, useParams, Route } from 'react-router-dom';
 import { Oval } from  'react-loader-spinner';
 
