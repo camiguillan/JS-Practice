@@ -40,8 +40,9 @@ return (
            <div key={index} className="column">
                 <div  className="card"   id={char.id.toString()}  onClick={handleClick}  >
                     <img src={char.image} alt='' ></img>
+                    <h5> {char.name} </h5>
                     <div className="cinfo" >
-                        <h5> {char.name} </h5>
+                        
                         <p>  <b> Species:</b> {char.species} </p>
                         <p><b> Origin:</b>  {char.origin.name} </p>
                         <p> <b> Location: </b>   {char.location.name}</p>

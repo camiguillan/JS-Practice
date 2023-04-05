@@ -3,7 +3,8 @@ import { Link,  useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import './Profile.css';
+//import './Profile.css';
+import './appstyles.scss';
 import { Navigate, useNavigate, useParams, Route } from 'react-router-dom';
 import { Oval } from  'react-loader-spinner';
 
@@ -96,17 +97,14 @@ function Profile() {
       
       <div className='divProfile'>
 
-     
-      <Link className='linkProfile' to='/'>  Go Home</Link>
-      <Link  className='linkProfile' to='/characters'>  Go Back</Link>
-
-        <h1 className='h1Profile'> Character Profile: {currentC.name}
+      <h1 className='h1Profile'> Character Profile: {currentC.name}
         </h1>
+        
 
         <div className='profile'>
+       
             <img  className='imgP' src= {currentC.image} alt='No available' ></img>
           
-    
 
             <ul  className='infoP'>
                 <li> <b> Status: </b>   {currentC.status}   </li>
@@ -124,12 +122,16 @@ function Profile() {
                 
                 </li>
 
-                <button onClick = {handleClick }> View episodes details
+                <button className='viewEps' onClick = {handleClick }> View episodes details
                   </button>
             </ul>
        
 
             </div>
+          <div className='divlink'>
+            <Link className='linkProfile' to='/'>  Go Home</Link>
+            <Link  className='linkProfile' to='/characters'>  Go Back</Link>
+      </div>
 
     </div>}
 

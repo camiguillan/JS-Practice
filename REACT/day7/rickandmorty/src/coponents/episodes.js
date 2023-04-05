@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
-import './episodes.css';
+//import './episodes.css';
+import './appstyles.scss';
 import { Oval } from  'react-loader-spinner';
 
 
@@ -160,19 +161,25 @@ useEffect(() => {
   return (
     <>
    { (isloading && currentC.episode.length == 0) ?
-   <div className='oval'> 
-   <Oval className='loader' />
+   <div className='ovaldiv'> 
+   <Oval className='oval' />
    </div>
 
    :
 
   
     <div className='div-container' >
-      <Link  className='linkChar' to="/">Go home</Link>
-      <Link  className='linkChar' to={"/characters/" + currentC.id  } state = {currentC} >Go back</Link>
+    
       <h1 className='htitle'  >{currentC.name}: All episodes</h1>
       
       {episodes.length > 0 && showEps}
+
+      <div className='divlink'>
+
+      <Link  className='linkChar' to="/">Go home</Link>
+      <Link  className='linkChar' to={"/characters/" + currentC.id  } state = {currentC} >Go back</Link>
+      </div>
+
     </div>
   
     

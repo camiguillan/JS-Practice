@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css';
 import { Route, Routes, Link, Navigate} from "react-router-dom";
 import { BrowserRouter, Redirect } from "react-router-dom";  
-
-import Profile from './profile';
-import CharacterCards from './characterCards';
-import Home from './Home';
-import Episodes from './episodes';
+import Pagination from './pagination';
+import Profile from './coponents/profile';
+import CharacterCards from './coponents/characterCards';
+import Home from './coponents/Home';
+import Episodes from './coponents/episodes';
 
 
 /* character = {
@@ -32,6 +32,7 @@ function App() {
        <Route path="/characters/:id/episodes" element={<Episodes />} />  
 
        <Route path="/" element= {<Home />} /> 
+       <Route path="/pagination" element= {<Pagination />} /> 
        <Route path='*' element={ <Navigate to="/" /> }/>
     </Routes>
    

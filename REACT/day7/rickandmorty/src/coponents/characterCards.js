@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.css';
+//import './App.css';
+import './appstyles.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Characters from './characters';
-import Profile from './profile';
-import { Route, Routes, Link  } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
 
@@ -100,7 +99,7 @@ function CharacterCards() {
     
           <button  onClick={previous} >Previous</button>
           <button onClick={next} >Next</button>
-          <select className='select' onChange={showFilteredChars} >
+          <select className='select-filter' onChange={showFilteredChars} >
           <option key= '3' >  All </option>
             <option key= '1' >  Rick </option>
             <option key= '2' >  Morty </option>
