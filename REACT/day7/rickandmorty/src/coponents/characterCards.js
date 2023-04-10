@@ -94,8 +94,8 @@ function CharacterCards() {
         </div>
         
         :
-        <>
-        
+      
+       <>  
       <header className="header">  
       <h1>  RICK AND MORTY </h1>  
       <nav>
@@ -114,9 +114,11 @@ function CharacterCards() {
       </header>
 
       <div className="App">
-        <Characters char={characters}></Characters>
+      <Characters char={characters}></Characters>
       </div> 
+
       </>
+
       } 
      
      </>

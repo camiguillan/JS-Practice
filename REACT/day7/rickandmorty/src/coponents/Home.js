@@ -69,16 +69,9 @@ function Home() {
   }
 
 
-
-
-
-  
-
-
-
-
   return (
     <>
+
     {
     
     isLoading?
@@ -93,18 +86,11 @@ function Home() {
 
       <div>
         <h1 className='homeH1'>  RICK AND MORTY </h1> 
-         
         <Characters char={characters}  ></Characters>
-        {/* <div>
-          <p>ssssss</p>
-          <p>ssssss</p>
-          <p>ssssss</p>
-          <p>ssssss</p>
-        </div>
-       </div> */}
+      </div> 
 
       <div className='homeDiv'>
-      <p className='homeP' > Click to see all Rick and Morty's Characters    </p>
+        <p className='homeP' > Click to see all Rick and Morty's Characters </p>
         <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button>
         <Link  className='homeLink' to="/pagination" > pages </Link> 
       </div>
@@ -112,6 +98,8 @@ function Home() {
     </div>
 
     }
+
+
     </>
  
   )
