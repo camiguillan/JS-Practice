@@ -129,8 +129,11 @@ function Profile() {
 
             </div>
           <div className='divlink'>
-            <Link className='linkProfile' to='/'>  Go Home</Link>
-            <Link  className='linkProfile' to='/characters'>  Go Back</Link>
+                         
+          <button className='linkProfile' onClick={()=>  navigate("/") }> Go Home </button>
+          <button className='linkProfile' onClick={()=>  navigate("/characters") }>  Go Back </button>
+        
+           
       </div>
 
     </div>}

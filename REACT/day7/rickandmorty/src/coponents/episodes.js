@@ -36,18 +36,9 @@ useEffect(() => {
   }
 }, [currentC]);
 
-// useEffect(() => {
-//   if (currentC !== undefined && episodes !== undefined) {
-//     setisloading(false);
-//   }
-// }, [episodes]);
-
 
   async function getData(url){
     await getChar(url);  
-    // if (currentC != undefined && currentC.episode != undefined){
-    //   await fetchEpisodes();
-    // }
 
   };
   
@@ -175,9 +166,12 @@ useEffect(() => {
       {episodes.length > 0 && showEps}
 
       <div className='divlink'>
+      
+      <button className='linkChar' onClick={()=>  navigate("/") }> Go Home </button>
+      <button className='linkChar' onClick={()=>  navigate("/characters/" + currentC.id) }>  Go Back </button>
 
-      <Link  className='linkChar' to="/">Go home</Link>
-      <Link  className='linkChar' to={"/characters/" + currentC.id  } state = {currentC} >Go back</Link>
+     
+     
       </div>
 
     </div>

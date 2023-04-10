@@ -95,22 +95,21 @@ function CharacterCards() {
         
         :
         <>
-        <header className="header">  
+      <header className="header">  
       <h1>  RICK AND MORTY </h1>  
       <nav>
-      <button onClick={() => navigate("/")} > 
-        {/* <Link to="/" > Go Home </Link> </button> */}
-        Go Home </button>
-    
-          <button  onClick={previous} >Previous</button>
-          <button onClick={next} >Next</button>
-          <select className='select-filter' onChange={showFilteredChars} >
+        <button onClick={() => navigate("/")} > Go Home </button>
+        <button  onClick={previous} >Previous</button>
+        <button onClick={next} >Next</button>
+        <select className='select-filter' onChange={showFilteredChars} >
           <option key= '3' >  All </option>
-            <option key= '1' >  Rick </option>
-            <option key= '2' >  Morty </option>
+          <option key= '1' >  Rick </option>
+          <option key= '2' >  Morty </option>
             
           </select>
         </nav>
+
+
       </header>
 
       <div className="App">
