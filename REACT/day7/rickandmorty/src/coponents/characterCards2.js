@@ -7,25 +7,28 @@ import axios from 'axios';
 import Characters from './characters';
 import { useNavigate, useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
+import Pages from '../pagination';
 
 
-function CharacterCards() {
+function CharacterCards2() {
    //creating the list where all the characters will be saved
    const [characters, setCharacters] = useState([]);
    const [pageInfo, setPageInfo] = useState({});
    const navigate = useNavigate();
    const [isLoading, setIsLoading]  = useState(true);
 
-   //path='/characters/?page=:pageId
+   //path='/characters?page=:pageId
    const page = useParams();
-
+   console.log(page.pageId);
 
    
    //useEffect to fetch api data only one time when it is rendered, passing []
    useEffect(() => {
      //getting all characters 
-     // const url = "https://rickandmortyapi.com/api/character/?page =" + page.pageId ;
-     const url = "https://rickandmortyapi.com/api/character";
+     const url = "https://rickandmortyapi.com/api/character?page=" + page.pagenum ;
+     console.log(page.pagenum);
+     console.log(url);
+     //const url = "https://rickandmortyapi.com/api/character";
      getChars(url);
        
    }, []);
@@ -66,7 +69,7 @@ function CharacterCards() {
      var url;
      switch(event.target.value){
        
-       case 'All': { url = "https://rickandmortyapi.com/api/character";
+       case 'All': { url = "https://rickandmortyapi.com/api/character?page=" + page.pageId;
        getChars(url);}
          break;
        
@@ -111,6 +114,8 @@ function CharacterCards() {
             
           </select>
         </nav>
+        
+
       </header>
 
       <div className="App">
@@ -126,4 +131,4 @@ function CharacterCards() {
 
 
 
-export default CharacterCards;
+export default CharacterCards2;

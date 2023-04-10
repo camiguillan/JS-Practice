@@ -1,3 +1,4 @@
+//TODO: FONT CONSISTENCE 
 $back-color: #e0f8ed;
 $par-back-color:  rgb(144, 194, 170);
 $container-font: 24px;
@@ -12,11 +13,11 @@ $h1-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 //buttons styling variables
 $but-back-color:  #55966d;
 $but-text-color: #2e2c2c; 
-$but-font-size: 16px;
+$but-font-size: 100%;
 $but-cursor: pointer;
 $but-transition:  background-color 0.2s ease;
 $but-border-rad: 5px; 
-$but-height: 35px;
+$but-height: 30%;
 $but-hover-color: #0f5033;
 $but-hover-text-color: #dbeade;
 
@@ -43,6 +44,25 @@ body{
     align-items: center;
     background-color: $back-color;
 }
+
+
+// .pagination {
+//     display: inline-block;
+  
+//   }
+  
+//   .pagination {
+//     color: black;
+//     float: left;
+//     padding: 8px 16px;
+//     text-decoration: none;
+//     transition: background-color .3s;
+//     border: 1px solid #ddd;
+//     margin: 0 4px;
+//   }
+  
+
+
 
 /*HOME STYLING*/
 
@@ -260,6 +280,7 @@ body{
         align-items: right;
         width: 100%;
         margin: $link-margin;
+    
        
         
         .linkProfile{
@@ -285,6 +306,7 @@ body{
         grid-template-columns: 0fr 50% 2%;
         column-gap: 2px;
         box-sizing: border-box; 
+      
         
         .infoP{
             font-size: $container-font;
@@ -292,6 +314,7 @@ body{
             width: 100%;
             box-sizing: border-box;
             display: inline-block;
+            font-family: $font-fam;
         }
     
         button {
@@ -306,6 +329,8 @@ body{
             margin: 5%;
             height: $but-height;
             box-shadow:$shadow;
+            font-family: $font-fam;
+            font-size: $but-font-size;
 
             &:hover{
                 background-color: $but-hover-color;
