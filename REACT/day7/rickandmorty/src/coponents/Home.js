@@ -31,6 +31,7 @@ function Home() {
 
   useEffect( () => {
    console.log(characters);
+   setIsLoading(false);
 
   }, [characters]);
 
@@ -54,7 +55,7 @@ function Home() {
           // console.log(characters);
           //setCharacters(chars);
          
-          setIsLoading(false);
+        
           // console.log(nextInfo);
           // console.log(pageInfo.next);
          // console.log(characters);
@@ -78,7 +79,9 @@ function Home() {
 
   return (
     <>
-    {isLoading?
+    {
+    
+    isLoading?
       <div className='ovaldiv'>
       <Oval></Oval>  
       </div>
@@ -92,13 +95,13 @@ function Home() {
         <h1 className='homeH1'>  RICK AND MORTY </h1> 
          
         <Characters char={characters}  ></Characters>
-        <div>
+        {/* <div>
           <p>ssssss</p>
           <p>ssssss</p>
           <p>ssssss</p>
           <p>ssssss</p>
         </div>
-       </div>
+       </div> */}
 
       <div className='homeDiv'>
       <p className='homeP' > Click to see all Rick and Morty's Characters    </p>

@@ -95,6 +95,7 @@ function CharacterCards() {
         
         :
         <>
+        
       <header className="header">  
       <h1>  RICK AND MORTY </h1>  
       <nav>
