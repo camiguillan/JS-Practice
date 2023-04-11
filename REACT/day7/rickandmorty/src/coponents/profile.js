@@ -103,7 +103,7 @@ function Profile() {
 
         <div className='profile'>
        
-            <img  className='imgP' src= {currentC.image} alt='No available' ></img>
+            <img  className='imgP' src= {currentC.image} alt='' ></img>
           
 
             <ul  className='infoP'>
