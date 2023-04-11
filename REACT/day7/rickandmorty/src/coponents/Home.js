@@ -82,16 +82,17 @@ function Home() {
       :
 
       
-    <div className='homeDiv' >
+    <div  >
 
-      <div>
+      <div className='homeDiv'>
         <h1 className='homeH1'>  RICK AND MORTY </h1> 
         <Characters char={characters}  ></Characters>
       </div> 
 
-      <div className='homeDiv'>
-        <p className='homeP' > Click to see all Rick and Morty's Characters </p>
+        <div  className='homeDiv' >
+     
         <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button>
+        <p className='homeP' > Click to see all Rick and Morty's Characters </p>
         <Link  className='homeLink' to="/pagination" > pages </Link> 
       </div>
 
