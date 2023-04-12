@@ -3,7 +3,7 @@ $back-color: #e0f8ed;
 $par-back-color:  rgb(163, 192, 178);
 $container-font: 24px;
 $font-fam:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$align-margin: 3% auto 1% ;
+$align-margin: 2% auto 1% ;
 
 //Headers 
 $h1-font: 70px;
@@ -75,18 +75,10 @@ body{
         font-family: $h1-font-family;
         font-size: $h1-font;
         color: $h1-color; 
-        margin: 1%; 
+        margin: 0.5%; 
     }
 
-    .homeP{ /*Paragraph of the home page*/
-        font-size: $container-font;
-        margin: auto;
-        font-family: $font-fam;
-        background-color: $par-back-color;
-        width: 50%;
-        ///height: 0.1%;
-        margin-bottom: 1%;
-    }
+ 
 
  
 
@@ -106,6 +98,21 @@ body{
         background-color: $link-hover-background-color;
     }
 }
+
+
+.homeP{ /*Paragraph of the home page*/
+    font-size: $container-font;
+    //margin: auto;
+    font-family: $font-fam;
+    //background-color: $par-back-color;
+    width: 50%;
+    margin: 1% 25% 1%;
+    height: 1%;
+    
+    margin-bottom: 1%;
+}
+
+
 
 
 

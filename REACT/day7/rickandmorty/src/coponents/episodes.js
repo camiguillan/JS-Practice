@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState} from 'react';
 import axios from 'axios';
 import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
 //import './episodes.css';
 import '../appstyles.scss';
 import { Oval } from  'react-loader-spinner';
+import { useQuery} from "react-query";
 
 
 export default function Episodes() {
@@ -24,18 +25,37 @@ export default function Episodes() {
     episode: []
 });
 
-useEffect(() => {
+
+
+// const fetchedEpisodes = useMemo( 
+//   allEpisodes, [charId.id]);
+// setEpisodes(fetchedEpisodes);
+
+
   const url = "https://rickandmortyapi.com/api/character/" + charId.id;
-  getData(url);
-  
-}, []);
+  const {data, status} = useQuery("currentChar", getData(url));
+  if(status == "success"){
+    setCurrentC(data);
+    fetchEpisodes();
+
+
+}
+
+// useEffect(()=> {
+
+//   const url = "https://rickandmortyapi.com/api/character/" + charId.id;
+//   getData(url);
+
+// }, [] );
+
+
+//
 
 useEffect(() => {
   if (currentC !== undefined && currentC.episode !== undefined ) {
     fetchEpisodes();
   }
 }, [currentC]);
-
 
   async function getData(url){
     await getChar(url);  
@@ -151,6 +171,7 @@ useEffect(() => {
 
   return (
     <>
+    
    { (isloading && currentC.episode.length == 0) ?
    <div className='ovaldiv'> 
    <Oval className='oval' />
@@ -178,6 +199,7 @@ useEffect(() => {
   
     
     }
+   
     </>
   );
 }

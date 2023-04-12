@@ -8,6 +8,8 @@ import CharacterCards from './coponents/characterCards';
 import Home from './coponents/Home';
 import Episodes from './coponents/episodes';
 import CharacterCards2 from './coponents/characterCards2';
+import { QueryClient, QueryClientProvider } from "react-query";
+
 
 /* character = {
       "id": 1,
@@ -18,10 +20,14 @@ import CharacterCards2 from './coponents/characterCards2';
 } */
 
 function App() {
+  const queryclient = new QueryClient();
+
 
 // path='/characters/?page=:pageId
   return (
-    <>     
+
+    <> 
+    <QueryClientProvider client={queryclient} > 
       <Routes>
      
      
@@ -37,6 +43,7 @@ function App() {
        <Route path="/pagination" element= {<Pages />} /> 
        <Route path='*' element={ <Navigate to="/" /> }/>
     </Routes>
+    </QueryClientProvider>   
    
     
     </>

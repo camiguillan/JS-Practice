@@ -131,7 +131,7 @@ function Profile() {
           <div className='divlink'>
                          
           <button className='linkProfile' onClick={()=>  navigate("/") }> Go Home </button>
-          <button className='linkProfile' onClick={()=>  navigate("/characters") }>  Go Back </button>
+          <button className='linkProfile' onClick={()=>  navigate("/characters") }>  Go to Characters </button>
         
            
       </div>
