@@ -35,7 +35,7 @@ function App() {
         
       </Route>
 
-      <Route path='/characters?pagenum=:pageId' element= {<CharacterCards2 />} />
+      {/* <Route path='/characters?pagenum=:pageId' element= {<CharacterCards2 />} /> */}
       <Route path="/characters/:id" element={<Profile />} />       
        <Route path="/characters/:id/episodes" element={<Episodes />} />  
 

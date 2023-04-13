@@ -4,6 +4,7 @@ import { useNavigate, Navigate, useParams } from "react-router-dom";
 //import CharsContext from CharacterCards;
 import {charsContext} from "./character-cards";
 import {charsContextHome} from "./home";
+import { charsContextCards2 } from "./character-cards2";
 
 
 function Characters(){
@@ -12,6 +13,7 @@ function Characters(){
     const charId = useParams();
     const characters = useContext(charsContext);
     const charactersHome = useContext(charsContextHome);
+    const chars2 = useContext(charsContextCards2);
 
     const ShowChars = () => {
         characters.map(
@@ -60,7 +62,29 @@ return (
             </div>
         )
 
-        : 
+        : chars2?
+
+        chars2.map(
+            ( char, index) => 
+            <div key={index} className="column">
+                 <div  className="card"   id={char.id.toString()}  onClick={handleClick}  >
+                     <img src={char.image} alt='' ></img>
+                     <h5> {char.name} </h5>
+                     <div className="cinfo" >
+                         
+                         <p>  <b> Species:</b> {char.species} </p>
+                         <p><b> Origin:</b>  {char.origin.name} </p>
+ 
+                         {/* <p> <b> Location: </b>   {char.location.name}</p>*/}
+                        
+                     </div>
+                 
+                  </div>
+ 
+             </div>
+         )
+
+         :
 
         charactersHome.map(
             ( char, index) => 

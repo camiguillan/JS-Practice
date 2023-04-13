@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactPaginate from 'react-paginate';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import CharacterCards2 from './coponents/character-cards2';
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import PaginationItem from '@mui/material/PaginationItem';
+
+
 
 export default function Pages() {
   const [pageInfo, setPageInfo] = useState({});
-  const [currentpage, setCurrentP] = useState('');
+  const [currentpage, setCurrentP] = useState();
   //charactrs per page: 20 -> info provided by api 
   const nav = useNavigate();
   const [searchp] = useSearchParams();
@@ -21,12 +23,12 @@ export default function Pages() {
   
     // const url = "https://rickandmortyapi.com/api/character/?page =" + pageNum;
     const url = "https://rickandmortyapi.com/api/character";
-    setCurrentP("/characters?pageId=" + pageNum );
+    setCurrentP( pageNum );
     
     getPageInfo(url);
 
       
-  }, []);
+  }, [currentpage]);
 
   async function getPageInfo(url){
     await axios
@@ -39,29 +41,39 @@ export default function Pages() {
 
   }
 
- 
-  
+
 
   function handlepageChange(event,value){
-    //setCurrenP(value);
-    setCurrentP("/characters?pageId=" +value);
+    setCurrentP(value);
     nav("/pagination?pageId=" + value)
-    console.log(value);
-    //nav('/characters/?page='+ value);
+    //console.log(value);
   }
 
   return (
     <div>
       
       <header>
-      <p> Page: {currentpage} </p>  
+     
     <Stack spacing={2}>
      
-      <Pagination className='pagination' count={pageInfo.pages} variant="outlined" shape="rounded"
-        onChange={handlepageChange} />
+      <Pagination className='pagination' count={pageInfo.pages} 
+        variant="outlined" shape="rounded"
+        onChange={handlepageChange}
+        page={
+          currentpage?
+            parseInt(currentpage)
+          : 0}
+        />
+
     </Stack>
     </header>
-    {/* <CharacterCards2></CharacterCards2> */}
+
+    <div>
+    <p> Page: {currentpage} </p> 
+    <CharacterCards2 value={currentpage} ></CharacterCards2>
+
+    </div>
+    
     </div>
   );
 }

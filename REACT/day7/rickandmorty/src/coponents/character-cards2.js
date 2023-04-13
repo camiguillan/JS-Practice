@@ -2,7 +2,7 @@ import React from 'react';
 //import './App.css';
 import '../styless/cards-style.scss';
 import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, createContext } from 'react';
 import axios from 'axios';
 import Characters from './characters';
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,28 +10,27 @@ import { Oval } from  'react-loader-spinner';
 import Pages from '../pagination';
 
 
-function CharacterCards2() {
+
+export const charsContextCards2 = createContext();
+
+
+function CharacterCards2(props) {
    //creating the list where all the characters will be saved
    const [characters, setCharacters] = useState([]);
    const [pageInfo, setPageInfo] = useState({});
    const navigate = useNavigate();
    const [isLoading, setIsLoading]  = useState(true);
-
-   //path='/characters?page=:pageId
-   const page = useParams();
-   console.log(page.pageId);
-
-   
+   const pageNum = (props.value);
+     
    //useEffect to fetch api data only one time when it is rendered, passing []
    useEffect(() => {
-     //getting all characters 
-     const url = "https://rickandmortyapi.com/api/character?page=" + page.pagenum ;
-     console.log(page.pagenum);
-     console.log(url);
+      
+     const url = "https://rickandmortyapi.com/api/character?page=" + pageNum ;
+    //  console.log(url, pageNum);
      //const url = "https://rickandmortyapi.com/api/character";
      getChars(url);
        
-   }, []);
+   }, [pageNum]);
  
    async function getChars(url){
     await axios
@@ -69,7 +68,7 @@ function CharacterCards2() {
      var url;
      switch(event.target.value){
        
-       case 'All': { url = "https://rickandmortyapi.com/api/character?page=" + page.pageId;
+       case 'All': { url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
        getChars(url);}
          break;
        
@@ -118,9 +117,15 @@ function CharacterCards2() {
 
       </header>
 
+      <charsContextCards2.Provider value={characters} >
       <div className="App">
-        <Characters char={characters}></Characters>
+      {/* <Characters char={characters}></Characters> */}
+      <Characters ></Characters>
       </div> 
+      </charsContextCards2.Provider>
+
+
+
       </>
       } 
      
