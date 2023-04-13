@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
-import CharacterCards2 from './coponents/characterCards2';
+import CharacterCards2 from './coponents/character-cards2';
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -12,14 +12,19 @@ export default function Pages() {
   const [currentpage, setCurrentP] = useState('');
   //charactrs per page: 20 -> info provided by api 
   const nav = useNavigate();
-  const searchp = useSearchParams();
+  const [searchp] = useSearchParams();
+  //console.log(searchp.get('pageId'));
+  const pageNum = searchp.get('pageId');
+  
 
   useEffect(() => {
   
-    // const url = "https://rickandmortyapi.com/api/character/?page =" + page.pageId ;
+    // const url = "https://rickandmortyapi.com/api/character/?page =" + pageNum;
     const url = "https://rickandmortyapi.com/api/character";
-    setCurrentP("/characters?pagenum=1" );
+    setCurrentP("/characters?pageId=" + pageNum );
+    
     getPageInfo(url);
+
       
   }, []);
 
@@ -39,7 +44,8 @@ export default function Pages() {
 
   function handlepageChange(event,value){
     //setCurrenP(value);
-    setCurrentP("/characters?pagenum=" + value );
+    setCurrentP("/characters?pageId=" +value);
+    nav("/pagination?pageId=" + value)
     console.log(value);
     //nav('/characters/?page='+ value);
   }

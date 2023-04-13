@@ -1,13 +1,13 @@
 import React from 'react';
 //import './App.css';
-import './appstyles.scss';
+import './styless/app-styles.scss';
 import { Route, Routes, Link, Navigate} from "react-router-dom";
 import Pages from './pagination';
 import Profile from './coponents/profile';
-import CharacterCards from './coponents/characterCards';
-import Home from './coponents/Home';
+import CharacterCards from './coponents/character-cards';
+import Home from './coponents/home';
 import Episodes from './coponents/episodes';
-import CharacterCards2 from './coponents/characterCards2';
+import CharacterCards2 from './coponents/character-cards2';
 import { QueryClient, QueryClientProvider } from "react-query";
 
 

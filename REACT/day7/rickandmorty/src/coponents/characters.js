@@ -2,8 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
 //import CharsContext from CharacterCards;
-import {charsContext} from "./characterCards";
-import {charsContextHome} from "./Home";
+import {charsContext} from "./character-cards";
+import {charsContextHome} from "./home";
 
 
 function Characters(){
@@ -12,9 +12,6 @@ function Characters(){
     const charId = useParams();
     const characters = useContext(charsContext);
     const charactersHome = useContext(charsContextHome);
-
-
-    console.log(characters);
 
     const ShowChars = () => {
         characters.map(

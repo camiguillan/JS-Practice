@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState} from 'react';
 import axios from 'axios';
 import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
 //import './episodes.css';
-import '../appstyles.scss';
+import '../styless/episodes-style.scss';
 import { Oval } from  'react-loader-spinner';
 import { useQuery} from "react-query";
 

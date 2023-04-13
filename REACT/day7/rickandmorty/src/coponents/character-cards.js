@@ -1,8 +1,8 @@
 import React from 'react';
 //import './App.css';
-import '../appstyles.scss';
+import '../styless/cards-style.scss';
 import { useState } from 'react';
-import { useEffect, createContext, ChildContextProvider } from 'react';
+import { useEffect, createContext } from 'react';
 import axios from 'axios';
 import Characters from './characters';
 import { useNavigate, useParams } from "react-router-dom";

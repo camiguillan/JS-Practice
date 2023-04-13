@@ -1,6 +1,6 @@
 import React from 'react';
 //import './App.css';
-import '../appstyles.scss';
+import '../styless/cards-style.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';

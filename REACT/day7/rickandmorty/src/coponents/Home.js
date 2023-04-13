@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, Link , useNavigate } from "react-router-dom";
 //import './Home.css';
 import { useState, createContext } from 'react';
-import '../appstyles.scss';
+import '../styless/home-style.scss';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Characters from './characters';
@@ -32,8 +32,7 @@ function Home() {
   }, []);
 
   useEffect( () => {
-   console.log(characters);
-   setIsLoading(false);
+    setIsLoading(false);
 
   }, [characters]);
 
@@ -41,8 +40,7 @@ function Home() {
   async function fetchData(url){
     const chars = await getChars(url);
     setCharacters(chars);
-    console.log(chars);
-    console.log(characters);
+   
   }
 
 
@@ -52,18 +50,8 @@ function Home() {
         .get(url)
         .then(response => {
           chars = response.data;
-          // console.log(getChars);
           setPageInfo(response.data.info);
-          // console.log(characters);
-          //setCharacters(chars);
-         
-        
-          // console.log(nextInfo);
-          // console.log(pageInfo.next);
-         // console.log(characters);
-          console.log(chars);
-
-        })
+                  })
         .catch(error => console.log(error));  
 
         return chars;
@@ -99,13 +87,15 @@ function Home() {
 
         <div  className='homeDiv' >
        
-        <p className='homeP' > Click to see all Rick and Morty's Characters 
+        <p className='homeP' > 
+        <br></br>
+        Click to see all Rick and Morty's Characters
         <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button>
-        
-         </p>
+        </p>
+         
       
         
-        <Link  className='homeLink' to="/pagination" > pages </Link> 
+        <Link  className='homeLink' to="/pagination?pageId=1" > pages </Link> 
       </div>
 
     </div>

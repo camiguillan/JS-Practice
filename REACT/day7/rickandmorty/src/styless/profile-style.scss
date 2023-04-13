@@ -1,0 +1,105 @@
+@import './app-style-variables.scss';
+
+/*PROFILE PAGE STYLING*/
+.divProfile{
+    //border-color: rgb(20, 20, 18);
+    box-shadow: $shadow;
+    padding: 0.1% 2%;
+    text-align: left;
+    background-color: $light-green-color;
+    border-radius: 10px;
+    width: 55%;
+    margin: 1% 20%; 
+
+
+    .h1Profile{
+        font-family: $franklin-font;
+        font-size: 70px;
+        color: $dark-green-color;
+        padding: 0 0 0 0 ;
+        text-align: center;
+        margin: 1%;
+    }
+
+    .divlink{
+        align-items: right;
+        width: 100%;
+        margin: 0 35% 2%;
+    
+       
+        
+        .linkProfile{
+            color: $white-color;
+            background-color: $green-color;
+            font-size: 20px;
+            margin: 5px;
+            font-family: $segoe-font;
+            box-sizing: border-box;
+            border-radius: $five-radius;
+            border:none;
+        
+            &:hover{
+               transition: $two-secs-transition;
+                background-color: $dark-green-color;
+            }
+            
+        }
+
+    }
+
+    .profile{
+        display: grid;
+        align-items: center; 
+        grid-template-columns: 45% 50% 2%;
+        column-gap: 1%;
+        box-sizing: border-box; 
+      
+        
+        .infoP{
+            font-size: 24px;
+            margin: 5%;
+            width: 100%;
+            box-sizing: border-box;
+            display: inline-block;
+            font-family: $segoe-font;
+        }
+    
+        button {
+            padding: 10px;
+            font-size: 100%;
+            border: none;
+            border-radius: $five-radius;
+            background-color: $moss-green-color;
+            color: $white-color;
+            cursor:$pointer-cursor;
+            transition: $two-secs-transition;
+            margin: 5%;
+            height: 30%;
+            box-shadow:$shadow;
+            font-family: $segoe-font;
+            font-size: 100%;
+
+            &:hover{
+                background-color: $pale-green-color;
+                color: $moss-green-color;
+                }
+            
+        }
+
+        
+        .imgP {
+            margin-bottom: 2%;
+            width: 100%;
+            border-radius: 3%;
+            margin: 3%;
+
+            &:hover {
+                box-shadow: $shadow;
+            }
+        }
+    }
+
+
+    
+
+}
