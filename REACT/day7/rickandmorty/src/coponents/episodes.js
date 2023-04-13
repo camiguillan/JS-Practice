@@ -27,11 +27,6 @@ export default function Episodes() {
 
 
 
-// const fetchedEpisodes = useMemo( 
-//   allEpisodes, [charId.id]);
-// setEpisodes(fetchedEpisodes);
-
-
   const url = "https://rickandmortyapi.com/api/character/" + charId.id;
   const {data, status} = useQuery("currentChar", getData(url));
   if(status == "success"){

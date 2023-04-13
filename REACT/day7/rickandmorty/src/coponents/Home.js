@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes, Link , useNavigate } from "react-router-dom";
 //import './Home.css';
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import '../appstyles.scss';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -9,11 +9,13 @@ import Characters from './characters';
 import { useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
 
+
+export const charsContextHome = createContext();
+
 function Home() {
   const nav = useNavigate();
   const [characters, setCharacters] = useState([]);
   const [pageInfo, setPageInfo] = useState({});
-  const navigate = useNavigate();
   const [isLoading, setIsLoading]  = useState(true);
 
   //path='/characters/?page=:pageId
@@ -82,14 +84,16 @@ function Home() {
       :
 
       
-    <div  >
+    <div>
 
+      <charsContextHome.Provider value={characters}>
       <div className='homeDiv'>
         <h1 className='homeH1'>  RICK AND MORTY </h1> 
-        <Characters char={characters}  ></Characters>
-     
-       
-      </div> 
+        {/* <Characters char={characters}  ></Characters> */}
+        <Characters  ></Characters>
+      </div>
+      </charsContextHome.Provider>
+        
 
       
 

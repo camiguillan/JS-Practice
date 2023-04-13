@@ -5,13 +5,14 @@ import CharacterCards2 from './coponents/characterCards2';
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 export default function Pages() {
   const [pageInfo, setPageInfo] = useState({});
   const [currentpage, setCurrentP] = useState('');
   //charactrs per page: 20 -> info provided by api 
   const nav = useNavigate();
+  const searchp = useSearchParams();
 
   useEffect(() => {
   

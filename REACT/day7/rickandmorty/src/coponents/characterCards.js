@@ -2,11 +2,14 @@ import React from 'react';
 //import './App.css';
 import '../appstyles.scss';
 import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, createContext, ChildContextProvider } from 'react';
 import axios from 'axios';
 import Characters from './characters';
 import { useNavigate, useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
+
+
+export const charsContext = createContext();
 
 
 function CharacterCards() {
@@ -18,6 +21,9 @@ function CharacterCards() {
 
    //path='/characters/?page=:pageId
    const page = useParams();
+
+
+ 
 
 
    
@@ -112,10 +118,12 @@ function CharacterCards() {
 
 
       </header>
-
+      <charsContext.Provider value={characters} >
       <div className="App">
-      <Characters char={characters}></Characters>
+      {/* <Characters char={characters}></Characters> */}
+      <Characters ></Characters>
       </div> 
+      </charsContext.Provider>
 
       </>
 
