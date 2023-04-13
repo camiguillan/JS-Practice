@@ -7,7 +7,8 @@ import axios from 'axios';
 import Characters from './characters';
 import { useNavigate, useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
-import Pages from '../pagination';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 
 
@@ -37,29 +38,24 @@ function CharacterCards2(props) {
          .get(url)
          .then(response => {
            const getChars = response.data.results;
-           // console.log(getChars);
            setPageInfo(response.data.info);
-           // console.log(characters);
-          
            setCharacters(getChars);
            setIsLoading(false);
-           // console.log(nextInfo);
-           // console.log(pageInfo.next);
          })
          .catch(error => console.log(error));  
  
    }
  
-   function next() {
-      setIsLoading(true);
-     getChars(pageInfo.next);
-   }
+  //  function next() {
+  //     setIsLoading(true);
+  //    getChars(pageInfo.next);
+  //  }
    
  
-   function previous() {
-    setIsLoading(true);
-     getChars(pageInfo.prev);
-   }
+  //  function previous() {
+  //   setIsLoading(true);
+  //    getChars(pageInfo.prev);
+  //  }
  
    
  
@@ -100,18 +96,36 @@ function CharacterCards2(props) {
         <header className="header">  
       <h1>  RICK AND MORTY </h1>  
       <nav>
-      <button onClick={() => navigate("/")} > 
+      <button className='nav-buttons'  onClick={() => navigate("/")} > 
         {/* <Link to="/" > Go Home </Link> </button> */}
         Go Home </button>
-    
+          {/*     
           <button  onClick={previous} >Previous</button>
-          <button onClick={next} >Next</button>
+          <button onClick={next} >Next</button> */}
+
           <select className='select-filter' onChange={showFilteredChars} >
-          <option key= '3' >  All </option>
+            <option key= '3' >  All </option>
             <option key= '1' >  Rick </option>
             <option key= '2' >  Morty </option>
             
           </select>
+
+          <Stack spacing={4}>
+              
+              <Pagination className='pagination' count={props.pageInfo.pages} 
+                variant="outlined" shape="rounded"
+                onChange={props.handlepageChange}
+                page={
+                  pageNum?
+                    parseInt(pageNum)
+                  : 0}
+                />
+
+            </Stack>
+
+
+
+          
         </nav>
         
 

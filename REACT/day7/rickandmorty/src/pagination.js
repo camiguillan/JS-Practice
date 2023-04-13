@@ -54,24 +54,14 @@ export default function Pages() {
       
       <header>
      
-    <Stack spacing={2}>
-     
-      <Pagination className='pagination' count={pageInfo.pages} 
-        variant="outlined" shape="rounded"
-        onChange={handlepageChange}
-        page={
-          currentpage?
-            parseInt(currentpage)
-          : 0}
-        />
-
-    </Stack>
+   
     </header>
 
     <div>
-    <p> Page: {currentpage} </p> 
-    <CharacterCards2 value={currentpage} ></CharacterCards2>
-
+{/*    
+    <CharacterCards2 value={currentpage} ></CharacterCards2> */}
+    <CharacterCards2 pageInfo={pageInfo} 
+        handlepageChange={handlepageChange} value={currentpage} />
     </div>
     
     </div>
