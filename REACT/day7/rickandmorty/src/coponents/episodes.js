@@ -31,10 +31,7 @@ export default function Episodes() {
   const {data, status} = useQuery("currentChar", getData(url));
   if(status == "success"){
     setCurrentC(data);
-    fetchEpisodes();
-
-
-}
+  }
 
 // useEffect(()=> {
 

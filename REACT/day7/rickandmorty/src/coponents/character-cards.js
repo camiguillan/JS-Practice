@@ -7,6 +7,7 @@ import axios from 'axios';
 import Characters from './characters';
 import { useNavigate, useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
+//import { appContext } from '../App';
 
 
 export const charsContext = createContext();
@@ -105,9 +106,9 @@ function CharacterCards() {
       <header className="header">  
       <h1>  RICK AND MORTY </h1>  
       <nav>
-        <button onClick={() => navigate("/")} > Go Home </button>
-        <button  onClick={previous} >Previous</button>
-        <button onClick={next} >Next</button>
+        <button className='nav-buttons'  onClick={() => navigate("/")} > Go Home </button>
+        <button  className='nav-buttons' onClick={previous} >Previous</button>
+        <button className='nav-buttons'  onClick={next} >Next</button>
         <select className='select-filter' onChange={showFilteredChars} >
           <option key= '3' >  All </option>
           <option key= '1' >  Rick </option>

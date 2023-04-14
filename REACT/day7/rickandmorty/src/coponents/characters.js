@@ -15,19 +15,6 @@ function Characters(){
     const charactersHome = useContext(charsContextHome);
     const chars2 = useContext(charsContextCards2);
 
-    const ShowChars = () => {
-        characters.map(
-            char => <div className="column">
-                <div className="card">
-                    <img src={char.image} alt='' ></img>
-                 </div>
-            </div>
-    )
-            
-        
-    }
-
-
     function handleClick(e){
         // <Link to = '/profile' ></Link>
         console.log(  'using params', charId.id, charId);

@@ -7,6 +7,7 @@ import axios from 'axios';
 import '../styless/profile-style.scss';
 import { Navigate, useNavigate, useParams, Route } from 'react-router-dom';
 import { Oval } from  'react-loader-spinner';
+import { useQuery} from "react-query";
 
 
 //https://rickandmortyapi.com/api/character/2
@@ -31,12 +32,27 @@ function Profile() {
     //const [butText, setButText] = useState('Show Episodes details');
     //console.log(data);
 
+
+//     function queryChar(url){
+//        const {data, status} = useQuery("currentC", getChar(url));
+//     if(status == "success"){
+//       setCurrentC(data);
+//       setIsLoading(false);
+// }
+  
+//     }
+
+
+    //const url = "https://rickandmortyapi.com/api/character/" + charId.id;
+   
+
     useEffect( () => {
       console.log('usingParams in profile', charId.id)
         const url = "https://rickandmortyapi.com/api/character/" + charId.id;
         //console.log(url);
         getChar(url);
         //allEpisodes();
+        setIsLoading(false);
           
       }, []);
     
@@ -62,7 +78,7 @@ function Profile() {
                 image: getC.image,
                 episode: getC.episode
               });
-              setIsLoading(false);
+            
              //console.log(currentC);
             //  console.log(currentC);
             //  console.log(getC);

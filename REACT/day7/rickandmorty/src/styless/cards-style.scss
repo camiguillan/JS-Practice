@@ -37,6 +37,7 @@
               transition: $two-secs-transition;
               margin: 1%;
               margin-top: 0.1%;
+              margin-bottom: 1%;
               height: 30%;
               box-shadow:$shadow;
   
@@ -50,19 +51,32 @@
           & .pagination {
             margin: 0.5% 36% 0.5% ;
             margin-bottom: 1.5%;
-            color: $black-color;
+            //color: $black-color;
+            
+            // &.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+            //     background-color: rgb(117, 190, 201);
+            // }
+
             
 
-            button{
-                background-color: $moss-green-color;
+            // * .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
+            
+            //     -webkit-tap-highlight-color: #915f5f;
+            //    // background-color: $moss-green-color;
+            // }
+
+            // button{
+            //     background-color: $moss-green-color;
             
 
-            &:hover {
-                  background-color: $dark-green-color;
-                  color: $white-color;
-            }
+            // &:hover {
+            //       background-color: $dark-green-color;
+            //       color: $white-color;
+            // }
 
-            }
+            // }
+
+
            
           }
 
@@ -112,10 +126,17 @@
                   }
           
           }
+
+      
               
       }
   
   
+    }
+
+
+    .MuiButtonBase.Mui-selected {
+        background-color: rgb(44 169 85);
     }
   
     .App{

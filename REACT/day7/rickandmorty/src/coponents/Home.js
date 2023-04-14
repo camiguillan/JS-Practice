@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, Routes, Link , useNavigate } from "react-router-dom";
+import {Link , useNavigate } from "react-router-dom";
 //import './Home.css';
 import { useState, createContext } from 'react';
 import '../styless/home-style.scss';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import Characters from './characters';
 import { useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
-
+import { appContext } from '../App';
 
 export const charsContextHome = createContext();
 
@@ -17,46 +17,34 @@ function Home() {
   const [characters, setCharacters] = useState([]);
   const [pageInfo, setPageInfo] = useState({});
   const [isLoading, setIsLoading]  = useState(true);
+  const chars = useContext(appContext);
+
+  //console.log(chars[0]);
 
   //path='/characters/?page=:pageId
   const page = useParams();
 
 
-  
-  //useEffect to fetch api data only one time when it is rendered, passing []
-  useEffect( () => {
-    //getting all characters 
-    const url = "https://rickandmortyapi.com/api/character/1,2,3";
-    fetchData(url);
+    useEffect( () => {
 
-  }, []);
-
-  useEffect( () => {
-    setIsLoading(false);
-
-  }, [characters]);
+      if(chars != null ){
+        const firstChars = chars[0].slice(0,3);
+        console.log(firstChars);
+        setCharacters(firstChars);
+        //console.log(characters);
+      }
+  }, [chars]);
 
 
-  async function fetchData(url){
-    const chars = await getChars(url);
-    setCharacters(chars);
-   
-  }
+    useEffect( ()=> {
 
-
-  async function getChars(url){
-    var chars;
-   await axios
-        .get(url)
-        .then(response => {
-          chars = response.data;
-          setPageInfo(response.data.info);
-                  })
-        .catch(error => console.log(error));  
-
-        return chars;
-
-  }
+      if(characters != null){
+        setTimeout(
+          ()=> setIsLoading(false)
+        ,2000 );
+        console.log(characters);
+      }
+    }, [characters]);
 
 
   return (
@@ -76,8 +64,7 @@ function Home() {
 
       <charsContextHome.Provider value={characters}>
       <div className='homeDiv'>
-        <h1 className='homeH1'>  RICK AND MORTY </h1> 
-        {/* <Characters char={characters}  ></Characters> */}
+         <h1 className='homeH1'>  RICK AND MORTY </h1> 
         <Characters  ></Characters>
       </div>
       </charsContextHome.Provider>
@@ -110,3 +97,4 @@ function Home() {
 
 
 export default Home;
+

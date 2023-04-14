@@ -26,7 +26,7 @@ function CharacterCards2(props) {
    //useEffect to fetch api data only one time when it is rendered, passing []
    useEffect(() => {
       
-     const url = "https://rickandmortyapi.com/api/character?page=" + pageNum ;
+     const url = "https://rickandmortyapi.com/api/character?pageId=" + pageNum ;
     //  console.log(url, pageNum);
      //const url = "https://rickandmortyapi.com/api/character";
      getChars(url);
@@ -64,7 +64,7 @@ function CharacterCards2(props) {
      var url;
      switch(event.target.value){
        
-       case 'All': { url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
+       case 'All': { url = "https://rickandmortyapi.com/api/character?pageId=" + pageNum;
        getChars(url);}
          break;
        

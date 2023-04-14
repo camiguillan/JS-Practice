@@ -1,7 +1,7 @@
 import React from 'react';
 //import './App.css';
 import './styless/app-styles.scss';
-import { Route, Routes, Link, Navigate} from "react-router-dom";
+import { Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Pages from './pagination';
 import Profile from './coponents/profile';
 import CharacterCards from './coponents/character-cards';
@@ -9,6 +9,14 @@ import Home from './coponents/home';
 import Episodes from './coponents/episodes';
 import CharacterCards2 from './coponents/character-cards2';
 import { QueryClient, QueryClientProvider } from "react-query";
+import { createContext } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { Oval } from  'react-loader-spinner';
+
+
+export const appContext = createContext();
 
 
 /* character = {
@@ -19,32 +27,149 @@ import { QueryClient, QueryClientProvider } from "react-query";
       "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
 } */
 
+/* {
+    "count": 826,
+    "pages": 42,
+    "next": "https://rickandmortyapi.com/api/character?page=2",
+    "prev": null
+  } */
+
 function App() {
   const queryclient = new QueryClient();
+  const nav = useNavigate();
+  const [characters, setCharacters] = useState([]);
+  const [pageInfo, setPageInfo] = useState({});
+  const [isLoading, setIsLoading]  = useState(true);
+  const url = "https://rickandmortyapi.com/api/character";
+
+
+  //useEffect to fetch api data only one time when it is rendered, passing []
+  // useEffect( () => {
+  //   //getting all characters 
+ 
+  //   fetchData(url);
+
+  // }, []);
+
+
+  // useEffect( () => {
+  //   const data = fetchInfo(url);
+  //   setCharacters(data.results)
+  //   setPageInfo(data.info);
+  //   console.log(characters, pageInfo);
+  //   if(characters){
+  //     setIsLoading(false);
+      
+  //   }
+
+
+  // }, [characters, pageInfo]);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getChars(url);
+      setCharacters(data.results);
+      setPageInfo({
+        count: data.info.count,
+        pages: data.info.pages,
+        next: data.info.next,
+        prev: data.info.prev,
+      });
+      setIsLoading(false);
+    }
+    fetchData();
+  }, []);
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [characters, pageInfo]);
+  
+
+
+  async function fetchInfo(url){
+    const data =  await getChars(url);
+    return data;
+
+  }
+
+
+
+  async function fetchData(url){
+    const data =  await getChars(url);
+    //const chars = await getChars(url);
+    setCharacters(data.results);
+    //console.log(characters)
+    //console.log(data.info);
+    setPageInfo({
+        count: data.info.count,
+        pages: data.info.pages,
+        next: data.info.next,
+        prev: data.info.prev
+    }
+  );
+    //console.log(pageInfo);
+   
+  }
+
+
+  async function getChars(url){
+    var chars;
+   await axios
+        .get(url)
+        .then(response => {
+          chars = response.data;
+          //setPageInfo(response.data.info);
+          //setPageInfo(response.data.info);
+          //console.log(chars);
+          //console.log(pageInfo);
+                  })
+        .catch(error => console.log(error));  
+
+        return chars;
+
+  }
+
 
 
 // path='/characters/?page=:pageId
   return (
 
     <> 
+
+
+
+
+   {  isLoading?
+
+   <div>
+      <Oval></Oval>
+      </div>
+
+
+      :  
+   
+   
+   <appContext.Provider value={[characters, pageInfo]} >
     <QueryClientProvider client={queryclient} > 
       <Routes>
      
-     
-      <Route path='/characters' element= {<CharacterCards />} >
-        
-      </Route>
-
+      <Route path="/pagination" element= {<Pages />} /> 
       {/* <Route path='/characters?pagenum=:pageId' element= {<CharacterCards2 />} /> */}
       <Route path="/characters/:id" element={<Profile />} />       
        <Route path="/characters/:id/episodes" element={<Episodes />} />  
 
-       <Route path="/" element= {<Home />} /> 
-       <Route path="/pagination" element= {<Pages />} /> 
+    
+
+       <Route path="/" element= {<Home />} />       
        <Route path='*' element={ <Navigate to="/" /> }/>
+       <Route path='/characters' element= {<CharacterCards />} > </Route>
+      
+
     </Routes>
-    </QueryClientProvider>   
-   
+    </QueryClientProvider> 
+    </appContext.Provider>  
+   }
     
     </>
  
@@ -52,3 +177,5 @@ function App() {
 }
 
 export default App;
+
+
