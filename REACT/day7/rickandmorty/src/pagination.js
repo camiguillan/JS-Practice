@@ -30,15 +30,13 @@ export default function Pages() {
     setCurrentP( pageNum );
     
     // getPageInfo(url);
-
-      
   }, [currentpage]);
 
   
   useEffect(() => {
 
     setPageInfo(info[1]);  
-    console.log(pageInfo);      
+    //console.log(pageInfo);      
   }, [pageInfo]);
 
 
@@ -59,11 +57,15 @@ export default function Pages() {
   function handlepageChange(event,value){
     setCurrentP(value);
     nav("/pagination?pageId=" + value)
-    console.log(value);
+    //console.log(value);
   }
 
   return (
     <div>
+
+      {/* <header>
+      <h1>  RICK AND MORTY </h1> 
+      </header> */}
       
   
     {/*    

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 //import './App.css';
 import '../styless/cards-style.scss';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useEffect, createContext } from 'react';
 import axios from 'axios';
 import Characters from './characters';
@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { appContext } from '../App';
 
 
 
@@ -21,17 +22,39 @@ function CharacterCards2(props) {
    const [pageInfo, setPageInfo] = useState({});
    const navigate = useNavigate();
    const [isLoading, setIsLoading]  = useState(true);
+   var firstPage = useContext(appContext);
    const pageNum = (props.value);
+   var pageNumRef = useRef(pageNum);
+
+
+  //  useEffect(
+  //   () => {
+  //     setCharacters(firstPage[0]);
+  //     setIsLoading(false);
+  //   }, [firstPage]
+  //  );
      
    //useEffect to fetch api data only one time when it is rendered, passing []
    useEffect(() => {
-      
-     const url = "https://rickandmortyapi.com/api/character?pageId=" + pageNum ;
-    //  console.log(url, pageNum);
-     //const url = "https://rickandmortyapi.com/api/character";
-     getChars(url);
-       
-   }, [pageNum]);
+    if(pageNum){
+      if(pageNum == 1){
+        setCharacters(firstPage[0]);
+        setIsLoading(false);
+      }
+      else if (parseInt(pageNum) !== pageNumRef.current){
+        console.log("pageNUm:",pageNum, "PageNUmRef:",pageNumRef.current);
+        firstPage = undefined;
+        pageNumRef.current = pageNum;
+        const url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
+        setIsLoading(true);
+        getChars(url);
+
+      }
+    }
+
+  }, [pageNum]);
+
+
  
    async function getChars(url){
     await axios
