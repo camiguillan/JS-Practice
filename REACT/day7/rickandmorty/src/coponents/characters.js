@@ -29,7 +29,7 @@ function Characters(props){
 
         if(charsInfo != null ){
           const firstChars = charsInfo[0].slice(0,3);
-          console.log(firstChars);
+          //console.log(firstChars);
           setCharacters(firstChars);
           //console.log(characters);
         }

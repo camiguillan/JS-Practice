@@ -25,7 +25,10 @@ function CharacterCards2(props) {
    var firstPage = useContext(appContext);
    var pageNum = (props.value);
    var pageNumRef = useRef(pageNum);
-
+  const [filterCode, setFilterCode] = useState(0);
+  //const numPages = props.pageinfo.pages;
+  var filter = props.filterCode;
+  //console.log(props.pageinfo.pages);
 
   //  useEffect(
   //   () => {
@@ -37,22 +40,60 @@ function CharacterCards2(props) {
    //useEffect to fetch api data only one time when it is rendered, passing []
    useEffect(() => {
     if(pageNum){
-      if(pageNum == 1){
+      if(pageNum == 1 ){
         setCharacters(firstPage[0]);
+        //setFilterCode(numPages);
+
         setIsLoading(false);
       }
       else if (parseInt(pageNum) !== pageNumRef.current){
         console.log("pageNUm:",pageNum, "PageNUmRef:",pageNumRef.current);
         firstPage = undefined;
         pageNumRef.current = pageNum;
-        const url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
         setIsLoading(true);
-        getChars(url);
+        setNumPages()
+    
+        //const url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
+       
+        //getChars(url);
 
       }
     }
 
   }, [pageNum]);
+
+
+  useEffect( ()=> {
+    setNumPages();
+
+    
+
+  },[filterCode]);
+
+  async function setNumPages(){
+    var url;
+    switch(filter){
+      case "All": {
+                  url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
+                   getChars(url);
+                   setFilterCode(props.pageInfo.pages);}
+        break;
+      case "Rick": { 
+                    
+                    url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
+                    await getChars(url);
+                    setFilterCode(pageInfo.pages);}
+        break;
+
+      case "Morty": {  url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=morty';
+                      await getChars(url);
+                      setFilterCode(pageInfo.pages);}
+        break; 
+
+      
+    }
+
+  }
 
 
  
@@ -62,6 +103,7 @@ function CharacterCards2(props) {
          .then(response => {
            const getChars = response.data.results;
            setPageInfo(response.data.info);
+           console.log(pageInfo);
            setCharacters(getChars);
            setIsLoading(false);
          })
@@ -69,38 +111,29 @@ function CharacterCards2(props) {
  
    }
  
-  //  function next() {
-  //     setIsLoading(true);
-  //    getChars(pageInfo.next);
-  //  }
-   
- 
-  //  function previous() {
-  //   setIsLoading(true);
-  //    getChars(pageInfo.prev);
-  //  }
- 
-   
- 
  
    function showFilteredChars(event){
      var url;
      switch(event.target.value){
        
-       case 'All': { url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
-       getChars(url);}
+       case 'All': {  
+                      url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
+                      getChars(url);}
          break;
        
+
          case 'Rick':{ pageNum = "1";
-          
+                       
                       url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
                       getChars(url);
                     
                     }
          break;
  
-         case 'Morty' : { url = 'https://rickandmortyapi.com/api/character/?page=1&name=morty';
-         getChars(url);}
+         case 'Morty' : {  pageNum = "1";
+                          
+                          url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=morty'
+                          getChars(url);}
  
          break;
  
@@ -108,7 +141,8 @@ function CharacterCards2(props) {
      }
  
    }
- 
+
+
    return (
      <>
  
@@ -130,7 +164,7 @@ function CharacterCards2(props) {
           <button  onClick={previous} >Previous</button>
           <button onClick={next} >Next</button> */}
 
-          <select className='select-filter' onChange={showFilteredChars} >
+          <select className='select-filter' onChange={showFilteredChars } >
             <option key= '3' >  All </option>
             <option key= '1' >  Rick </option>
             <option key= '2' >  Morty </option>
@@ -139,7 +173,7 @@ function CharacterCards2(props) {
 
           <Stack spacing={4}>
               
-              <Pagination className='pagination' count={props.pageInfo.pages} 
+              <Pagination className='pagination' count={filterCode} 
                 variant="outlined" shape="rounded"
                 onChange={props.handlepageChange}
                 page={

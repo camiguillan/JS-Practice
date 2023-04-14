@@ -81,7 +81,7 @@ function Home() {
          
       
         
-        <Link  className='homeLink' to="/pagination?pageId=1" > pages </Link> 
+        <Link  className='homeLink' to="/pagination?pageId=1&name=All" > pages </Link> 
       </div>
 
     </div>

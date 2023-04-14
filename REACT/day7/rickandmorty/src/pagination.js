@@ -18,12 +18,15 @@ export default function Pages() {
   const [searchp] = useSearchParams();
   //console.log(searchp.get('pageId'));
   const info = useContext(appContext);
-  const pageNum = searchp.get('pageId');
+  var pageNum = searchp.get('pageId');
+  var filterChar = searchp.get("name"); 
+  const [currentName, setName] = useState();
   
 
   useEffect(() => {
     setCurrentP( pageNum );
-     }, [currentpage]);
+    setName(filterChar);
+     }, [currentpage, currentName]);
 
   
   useEffect(() => {
@@ -34,28 +37,67 @@ export default function Pages() {
 
   function handlepageChange(event,value){
     setCurrentP(value);
-    nav("/pagination?pageId=" + value)
+    //nav("/pagination?pageId=" + value)
+    nav("/pagination?pageId=" + value + "&name=" + filterChar);
     //console.log(value);
   }
+
+  function nameSelected(event){
+    var url;
+    setName(event.target.value);
+    setCurrentP(1);
+    switch(event.target.value){
+      
+      case 'All': {   nav("/pagination?pageId=" + currentpage + "&name=All" );
+                      //url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
+                      
+                     }
+        break;
+      
+
+        case 'Rick':{ 
+                      nav("/pagination?pageId=" + currentpage + "&name=" + "Rick");
+                      //url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
+               
+                   
+                   }
+        break;
+
+        case 'Morty' : { 
+                           nav("/pagination?pageId=" + currentpage + "&name=Morty" );
+                           //url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=morty'
+                    
+
+        break;
+        }
+
+  }
+}
 
   return (
     <div>
 
-      {/* <header>
+      <header>
       <h1>  RICK AND MORTY </h1> 
-      </header> */}
+      
+      <select className='select-filter' onChange={nameSelected} >
+            <option key= '3' >  All </option>
+            <option key= '1' >  Rick </option>
+            <option key= '2' >  Morty </option>
+            
+          </select>
+
+      </header>
       
   
     {/*    
     <CharacterCards2 value={currentpage} ></CharacterCards2> */}
     <CharacterCards2 pageInfo={pageInfo} 
-        handlepageChange={handlepageChange} value={currentpage} />
+        handlepageChange={handlepageChange} value={currentpage}  filterCode = {currentName}  />
     
     </div>
     
   
   );
 }
-
-
 
