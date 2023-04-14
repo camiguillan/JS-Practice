@@ -22,35 +22,13 @@ export default function Pages() {
   
 
   useEffect(() => {
-
-    //setPageInfo(info[1]);  
-    //console.log(pageInfo);
-    // const url = "https://rickandmortyapi.com/api/character/?page =" + pageNum;
-    //const url = "https://rickandmortyapi.com/api/character";
     setCurrentP( pageNum );
-    
-    // getPageInfo(url);
-  }, [currentpage]);
+     }, [currentpage]);
 
   
   useEffect(() => {
-
-    setPageInfo(info[1]);  
-    //console.log(pageInfo);      
+    setPageInfo(info[1]);      
   }, [pageInfo]);
-
-
-
-  // async function getPageInfo(url){
-  //   await axios
-  //   .get(url)
-  //   .then(response => {
-  //       setPageInfo(response.data.info);
-  //     //setIsLoading(false);
-  //   })
-  //   .catch(error => console.log(error)); 
-
-  // }
 
 
 

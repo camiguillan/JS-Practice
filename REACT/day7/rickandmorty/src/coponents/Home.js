@@ -15,7 +15,6 @@ export const charsContextHome = createContext();
 function Home() {
   const nav = useNavigate();
   const [characters, setCharacters] = useState([]);
-  const [pageInfo, setPageInfo] = useState({});
   const [isLoading, setIsLoading]  = useState(true);
   const chars = useContext(appContext);
 
@@ -24,7 +23,7 @@ function Home() {
   //path='/characters/?page=:pageId
   const page = useParams();
 
-
+  /** */
     useEffect( () => {
 
       if(chars != null ){
@@ -65,7 +64,7 @@ function Home() {
       <charsContextHome.Provider value={characters}>
       <div className='homeDiv'>
          <h1 className='homeH1'>  RICK AND MORTY </h1> 
-        <Characters  ></Characters>
+        <Characters value = {"home"} ></Characters>
       </div>
       </charsContextHome.Provider>
         

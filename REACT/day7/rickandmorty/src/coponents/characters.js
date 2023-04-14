@@ -1,19 +1,41 @@
 import React from "react";
 import { useContext } from "react";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
-//import CharsContext from CharacterCards;
 import {charsContext} from "./character-cards";
 import {charsContextHome} from "./home";
 import { charsContextCards2 } from "./character-cards2";
+import { appContext } from "../App";
+import { useEffect, useState} from 'react';
 
 
-function Characters(){
+
+function Characters(props){
     //const characters = props.char;
     const navigate = useNavigate();
     const charId = useParams();
-    const characters = useContext(charsContext);
+    const chars = useContext(charsContext);
     const charactersHome = useContext(charsContextHome);
     const chars2 = useContext(charsContextCards2);
+    const [characters, setCharacters] = useState([]);
+    const [isLoading, setIsLoading]  = useState(true);
+
+    // use this to show first 3 chars in Home page 
+    //use this to show firs page in characters page 
+    const charsInfo = useContext(appContext); 
+    var pageCode = props.value; 
+
+
+    useEffect( () => {
+
+        if(charsInfo != null ){
+          const firstChars = charsInfo[0].slice(0,3);
+          console.log(firstChars);
+          setCharacters(firstChars);
+          //console.log(characters);
+        }
+    }, [charsInfo]);
+
+
 
     function handleClick(e){
         // <Link to = '/profile' ></Link>
@@ -28,8 +50,8 @@ return (
     <div className="row">
        {/* {ShowChars} */}
 
-       { characters? 
-        characters.map(
+       { chars? 
+        chars.map(
            ( char, index) => 
            <div key={index} className="column">
                 <div  className="card"   id={char.id.toString()}  onClick={handleClick}  >
@@ -71,7 +93,7 @@ return (
              </div>
          )
 
-         :
+         : pageCode = "home"?
 
         charactersHome.map(
             ( char, index) => 
@@ -92,6 +114,7 @@ return (
  
              </div>
          )
+         : console.log("nothing")
 
             
         

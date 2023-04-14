@@ -23,7 +23,7 @@ function CharacterCards2(props) {
    const navigate = useNavigate();
    const [isLoading, setIsLoading]  = useState(true);
    var firstPage = useContext(appContext);
-   const pageNum = (props.value);
+   var pageNum = (props.value);
    var pageNumRef = useRef(pageNum);
 
 
@@ -87,15 +87,19 @@ function CharacterCards2(props) {
      var url;
      switch(event.target.value){
        
-       case 'All': { url = "https://rickandmortyapi.com/api/character?pageId=" + pageNum;
+       case 'All': { url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
        getChars(url);}
          break;
        
-         case 'Rick':{ url = 'https://rickandmortyapi.com/api/character/?name=rick';
-                      getChars(url);}
+         case 'Rick':{ pageNum = "1";
+          
+                      url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
+                      getChars(url);
+                    
+                    }
          break;
  
-         case 'Morty' : { url = 'https://rickandmortyapi.com/api/character/?name=morty';
+         case 'Morty' : { url = 'https://rickandmortyapi.com/api/character/?page=1&name=morty';
          getChars(url);}
  
          break;
@@ -157,7 +161,7 @@ function CharacterCards2(props) {
       <charsContextCards2.Provider value={characters} >
       <div className="App">
       {/* <Characters char={characters}></Characters> */}
-      <Characters ></Characters>
+      <Characters value= {"chars2" } ></Characters>
       </div> 
       </charsContextCards2.Provider>
 

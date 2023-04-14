@@ -122,7 +122,7 @@ function CharacterCards() {
       <charsContext.Provider value={characters} >
       <div className="App">
       {/* <Characters char={characters}></Characters> */}
-      <Characters ></Characters>
+      <Characters  value= {"chars" } ></Characters>
       </div> 
       </charsContext.Provider>
 
