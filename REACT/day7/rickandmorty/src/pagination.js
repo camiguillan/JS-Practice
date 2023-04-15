@@ -21,16 +21,19 @@ export default function Pages() {
   var pageNum = searchp.get('pageId');
   var filterChar = searchp.get("name"); 
   const [currentName, setName] = useState();
-  
+  const [nameList, setNameList] = useState([]); 
+  console.log(nameList);
 
   useEffect(() => {
     setCurrentP( pageNum );
     setName(filterChar);
-     }, [currentpage, currentName]);
+     }, [currentpage, currentName ]);
 
   
   useEffect(() => {
-    setPageInfo(info[1]);      
+    setPageInfo(info[1]); 
+    setNameOrder();     
+    //console.log(pageInfo); 
   }, [pageInfo]);
 
 
@@ -42,6 +45,39 @@ export default function Pages() {
     //console.log(value);
   }
 
+
+  function setNameOrder(){
+    switch(currentName){
+      case 'All': {   const allfirst = ["All", "Rick", "Morty"];
+                      setNameList(allfirst);
+                      console.log(nameList);
+                     }
+        break;
+      
+
+        case 'Rick':{ 
+                     
+                      const rickFirst = (["Rick", "Morty", "All"]);
+                      setNameList(rickFirst);
+                      console.log(nameList);
+                   
+                   }
+        break;
+
+        case 'Morty' : {
+                           const mortyFirst = [ "Morty", "All","Rick"]; 
+                           setNameList(mortyFirst);
+                           console.log(nameList);
+                           
+                          }
+
+        break;
+      }
+  
+
+    
+  }
+
   function nameSelected(event){
     var url;
     setName(event.target.value);
@@ -49,27 +85,37 @@ export default function Pages() {
     switch(event.target.value){
       
       case 'All': {   nav("/pagination?pageId=" + currentpage + "&name=All" );
-                      //url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
-                      
+                      //url = "https://rickandmortyapi.com/api/character?page=" + currentpage;
+                      const allfirst = ["All", "Rick", "Morty"];
+                      setNameList(allfirst);
+                      console.log(nameList);
                      }
         break;
       
 
         case 'Rick':{ 
                       nav("/pagination?pageId=" + currentpage + "&name=" + "Rick");
-                      //url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
-               
+                      //url = 'https://rickandmortyapi.com/api/character/?page='+ currentpage + '&name=rick';
+                      const rickFirst = (["Rick", "Morty", "All"]);
+                      setNameList(rickFirst);
+                      console.log(nameList);
                    
                    }
         break;
 
         case 'Morty' : { 
                            nav("/pagination?pageId=" + currentpage + "&name=Morty" );
-                           //url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=morty'
+                           const mortyFirst = [ "Morty", "All","Rick"]; 
+                           setNameList(mortyFirst);
+                           console.log(nameList);
+                           //url = 'https://rickandmortyapi.com/api/character/?page='+ currentpage+ '&name=morty'
                     
 
         break;
+       
+
         }
+    
 
   }
 }
@@ -81,9 +127,16 @@ export default function Pages() {
       <h1>  RICK AND MORTY </h1> 
       
       <select className='select-filter' onChange={nameSelected} >
-            <option key= '3' >  All </option>
+        {nameList.map(
+            (name, key) => {
+              <option key= {key} > {name} </option>
+              console.log(name);
+            }
+        )}
+        {/*  <option key= '3' >  All </option>
             <option key= '1' >  Rick </option>
-            <option key= '2' >  Morty </option>
+            <option key= '2' >  Morty </option>*/}
+           
             
           </select>
 
