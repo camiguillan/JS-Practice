@@ -161,21 +161,21 @@ function CharacterCards2(props) {
         :
         <>
         <header className="header">  
-      <h1>  RICK AND MORTY </h1>  
+      {/* <h1>  RICK AND MORTY </h1>   */}
       <nav>
-      <button className='nav-buttons'  onClick={() => navigate("/")} > 
-        {/* <Link to="/" > Go Home </Link> </button> */}
+      {/* <button className='nav-buttons'  onClick={() => navigate("/")} > 
+        {/* <Link to="/" > Go Home </Link> </button> 
         Go Home </button>
-          {/*     
+             
           <button  onClick={previous} >Previous</button>
           <button onClick={next} >Next</button> */}
 
-          <select className='select-filter' onChange={showFilteredChars } >
+          {/* <select className='select-filter' onChange={showFilteredChars } >
             <option key= '3' >  All </option>
             <option key= '1' >  Rick </option>
             <option key= '2' >  Morty </option>
             
-          </select>
+          </select> */}
 
           <Stack spacing={4}>
               

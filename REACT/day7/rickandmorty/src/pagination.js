@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import PaginationItem from '@mui/material/PaginationItem';
 import { appContext } from './App';
+import './styless/cards-style.scss';
 
 
 
@@ -34,7 +35,7 @@ export default function Pages() {
     setPageInfo(info[1]); 
     setNameOrder();     
     //console.log(pageInfo); 
-  }, [pageInfo]);
+  }, [pageInfo,nameList]);
 
 
 
@@ -123,22 +124,29 @@ export default function Pages() {
   return (
     <div>
 
-      <header>
+      <header className='header'>
       <h1>  RICK AND MORTY </h1> 
-      
-      <select className='select-filter' onChange={nameSelected} >
-        {nameList.map(
-            (name, key) => {
-              <option key= {key} > {name} </option>
-              console.log(name);
-            }
-        )}
+
+      <nav>
+      <button className='nav-buttons'  onClick={() => nav("/")} > 
+        {/* <Link to="/" > Go Home </Link> </button> */}
+        Go Home </button>
+
+        <select className='select-filter' onChange={nameSelected} >
+          {nameList.map(item => {
+                return (<option key={item} value={item}>{item}</option>);
+          })}
+    
         {/*  <option key= '3' >  All </option>
             <option key= '1' >  Rick </option>
             <option key= '2' >  Morty </option>*/}
            
             
           </select>
+          
+        </nav>
+      
+      
 
       </header>
       
