@@ -25,32 +25,21 @@ function CharacterCards2(props) {
    var firstPage = useContext(appContext);
    var pageNum = (props.value);
    var pageNumRef = useRef(pageNum);
-  const [filterCode, setFilterCode] = useState(0);
+   var filter = props.filterCode; // filter name 
 
-  var filter = props.filterCode;
-  //console.log(props.pageinfo.pages);
-
-  //  useEffect(
-  //   () => {
-  //     setCharacters(firstPage[0]);
-  //     setIsLoading(false);
-  //   }, [firstPage]
-  //  );
      
    //useEffect to fetch api data only one time when it is rendered, passing []
 
    useEffect( ()=> {
     setNumPages();
-  },[props.pageInfo,filterCode]);
+  },[props.pageInfo, filter]);
 
    useEffect(() => {
     //const numPages = props.pageinfo.pages;
-    if(pageNum  ){
-      if(pageNum == 1  ){
+    if(pageNum  ){                   
+      if(pageNum == 1 && filter === 'All' ){
         setCharacters(firstPage[0]);
-        //setFilterCode(props.pageinfo.pages);
-
-        setIsLoading(false);
+        loadingTimeOut();
       }
       else if (parseInt(pageNum) !== pageNumRef.current){
         //console.log("pageNUm:",pageNum, "PageNUmRef:",pageNumRef.current);
@@ -58,15 +47,11 @@ function CharacterCards2(props) {
         pageNumRef.current = pageNum;
         setIsLoading(true);
         setNumPages(); 
-        //const url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
-       
-        //getChars(url);
-   
-     
+
       }
     }
 
-  }, [pageNum, filterCode]);
+  }, [pageNum, filter]);
 
 
 
@@ -78,28 +63,33 @@ function CharacterCards2(props) {
     switch(filter){
       case "All": {
                    url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
-                   getChars(url);
-                  // setFilterCode(props.pageInfo.pages);
+                   await getChars(url);
+                 
+             
                   }
         break;
       case "Rick": { 
                     
                     url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
                     await getChars(url);
-                    //setFilterCode(pageInfo.pages);
+                 
                   }
         break;
 
       case "Morty": {  url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=morty';
                       await getChars(url);
-                      //setFilterCode(pageInfo.pages);
+        
                     }
         break;       
     }
-   //console.log(filterCode);
-
   }
 
+function loadingTimeOut(){
+  setTimeout(
+    ()=> setIsLoading(false)
+  ,1000 );
+
+}
 
  
    async function getChars(url){
@@ -108,45 +98,16 @@ function CharacterCards2(props) {
          .then(response => {
            const getChars = response.data.results;
            setPageInfo(response.data.info);
-           //console.log(pageInfo);
            setCharacters(getChars);
-           setFilterCode(pageInfo.pages);
-           setIsLoading(false);
+           loadingTimeOut();
+          // setIsLoading(false);
          })
          .catch(error => console.log(error));  
  
    }
  
  
-   function showFilteredChars(event){
-     var url;
-     switch(event.target.value){
-       
-       case 'All': {  
-                      url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
-                      getChars(url);}
-         break;
-       
 
-         case 'Rick':{ pageNum = "1";
-                       
-                      url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=rick';
-                      getChars(url);
-                    
-                    }
-         break;
- 
-         case 'Morty' : {  pageNum = "1";
-                          
-                          url = 'https://rickandmortyapi.com/api/character/?page='+ pageNum + '&name=morty'
-                          getChars(url);}
- 
-         break;
- 
- 
-     }
- 
-   }
 
 
    return (
@@ -161,25 +122,12 @@ function CharacterCards2(props) {
         :
         <>
         <header className="header">  
-      {/* <h1>  RICK AND MORTY </h1>   */}
+ 
       <nav>
-      {/* <button className='nav-buttons'  onClick={() => navigate("/")} > 
-        {/* <Link to="/" > Go Home </Link> </button> 
-        Go Home </button>
-             
-          <button  onClick={previous} >Previous</button>
-          <button onClick={next} >Next</button> */}
-
-          {/* <select className='select-filter' onChange={showFilteredChars } >
-            <option key= '3' >  All </option>
-            <option key= '1' >  Rick </option>
-            <option key= '2' >  Morty </option>
-            
-          </select> */}
-
+     
           <Stack spacing={4}>
               
-              <Pagination className='pagination' count={filterCode} 
+              <Pagination className='pagination' count={pageInfo.pages} 
                 variant="outlined" shape="rounded"
                 onChange={props.handlepageChange}
                 page={
@@ -188,14 +136,9 @@ function CharacterCards2(props) {
                   : 0}
                 />
 
-            </Stack>
-
-
-
-          
+            </Stack>          
         </nav>
         
-
       </header>
 
       <charsContextCards2.Provider value={characters} >
