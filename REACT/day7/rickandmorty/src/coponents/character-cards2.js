@@ -23,7 +23,7 @@ function CharacterCards2(props) {
    const [isLoading, setIsLoading]  = useState(true);
    var firstPage = useContext(appContext);
    var pageNum = (props.value);
-   var pageNumRef = useRef(pageNum);
+   var pageNumRef = useRef(pageNum); //
    var filter = props.filterCode; // filter name 
 
      
