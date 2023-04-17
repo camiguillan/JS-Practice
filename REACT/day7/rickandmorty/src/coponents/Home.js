@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link , useNavigate } from "react-router-dom";
 //import './Home.css';
-import { useState, createContext } from 'react';
+import { useState} from 'react';
 import '../styless/home-style.scss';
 import { useEffect, useContext } from 'react';
-import axios from 'axios';
 import Characters from './characters';
 import { useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
