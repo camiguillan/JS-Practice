@@ -5,7 +5,6 @@ import { useState, useRef } from 'react';
 import { useEffect, createContext } from 'react';
 import axios from 'axios';
 import Characters from './characters';
-import { useNavigate} from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -23,7 +22,7 @@ function CharacterCards2(props) {
    const [isLoading, setIsLoading]  = useState(true);
    var firstPage = useContext(appContext);
    var pageNum = (props.value);
-   var pageNumRef = useRef(pageNum); //
+   var pageNumRef = useRef(pageNum);
    var filter = props.filterCode; // filter name 
 
      
@@ -40,17 +39,18 @@ function CharacterCards2(props) {
         setCharacters(firstPage[0]);
         loadingTimeOut();
       }
-      else if (parseInt(pageNum) !== pageNumRef.current){
+      else
+      {
         //console.log("pageNUm:",pageNum, "PageNUmRef:",pageNumRef.current);
         firstPage = undefined;
-        pageNumRef.current = pageNum;
+        //pageNumRef.current = pageNum;
         setIsLoading(true);
         setNumPages(); 
 
       }
     }
 
-  }, [pageNum]);
+  }, [pageNum, filter]);
 
   async function setNumPages(){
     var url;
@@ -76,6 +76,7 @@ function CharacterCards2(props) {
                     }
         break;       
     }
+    console.log(filter, pageNum);
   }
 
 function loadingTimeOut(){

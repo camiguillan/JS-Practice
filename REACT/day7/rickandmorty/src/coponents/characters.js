@@ -25,11 +25,11 @@ function Characters(props){
     useEffect( () => {
 
         if(charsInfo != null ){
-            if(pageCode == 'home'){
+            if(pageCode === 'home'){
                 const firstChars = charsInfo[0].slice(0,3);
                 setCharacters(firstChars);
                          }
-            else if(pageCode == 'charsPage1All'){
+            else if(pageCode === 'charsPage1All'){
                 setCharacters(charsInfo[0]);
             }
             else{
@@ -68,9 +68,6 @@ return (
              )
        }
 
-  
-
-        
     </div>
 
 );
