@@ -73,39 +73,7 @@ export default function Pages() {
     setName(event.target.value);
     setCurrentP(1);
     setNameOrder(event.target.value);
-  //   switch(event.target.value){
-      
-  //     case 'All': {  
-  //                     const allfirst = ["All", "Rick", "Morty"];
-  //                     setNameList(allfirst);
-  //                     //setName('All');                 
-  //                     nav("/pagination?pageId=" + currentpage + "&name=All" );
-                   
-  //       break;
-  //     }
-
-  //       case 'Rick':{                    
-  //                     const rickFirst = (["Rick", "Morty", "All"]);
-  //                     setNameList(rickFirst);
-  //                     //setName('Rick');                
-  //                     nav("/pagination?pageId=" + currentpage + "&name=" + "Rick");
-                   
-                   
-  //       break;
-  //       }
-
-  //       case 'Morty' : {                            
-  //                          const mortyFirst = [ "Morty", "All","Rick"]; 
-  //                          setNameList(mortyFirst);
-  //                          //setName('Morty');
-  //                          nav("/pagination?pageId=" + currentpage + "&name=Morty" );
-                        
-  //       break;
-  //       }
-
-  // }
-
-  nav("/pagination?pageId=" + currentpage + "&name=" + event.target.value );
+    nav("/pagination?pageId=" + currentpage + "&name=" + event.target.value );
 }
 
   return (
@@ -123,32 +91,9 @@ export default function Pages() {
           {nameList.map(item => {
                 return (<option key={item} value={item}>{item}</option>);
           })}
-    
-        {/*  <option key= '3' >  All </option>
-            <option key= '1' >  Rick </option>
-            <option key= '2' >  Morty </option>*/}
-           
-            
           </select>
 
-
-          {/* <Stack spacing={4}>
-              
-              <Pagination className='pagination' count={filterCode} 
-                variant="outlined" shape="rounded"
-                onChange={handlepageChange}
-                page={
-                  pageNum?
-                    parseInt(pageNum)
-                  : 0}
-                />
-
-            </Stack> */}
-          
         </nav>
-      
-      
-
       </header>
       
   

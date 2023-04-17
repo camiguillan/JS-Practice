@@ -163,7 +163,7 @@ function App() {
 
        <Route path="/" element= {<Home />} />       
        <Route path='*' element={ <Navigate to="/" /> }/>
-       <Route path='/characters' element= {<CharacterCards />} > </Route>
+       {/* <Route path='/characters' element= {<CharacterCards />} > </Route> */}
       
 
     </Routes>

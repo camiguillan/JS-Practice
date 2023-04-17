@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
 import { appContext } from '../App';
 
-export const charsContextHome = createContext();
+
 
 function Home() {
   const nav = useNavigate();
@@ -61,12 +61,12 @@ function Home() {
       
     <div>
 
-      <charsContextHome.Provider value={characters}>
+ 
       <div className='homeDiv'>
          <h1 className='homeH1'>  RICK AND MORTY </h1> 
         <Characters value = {"home"} ></Characters>
       </div>
-      </charsContextHome.Provider>
+ 
         
 
       
@@ -76,12 +76,14 @@ function Home() {
         <p className='homeP' > 
         <br></br>
         Click to see all Rick and Morty's Characters
-        <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button>
+        {/* <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button> */}
+        <button className='homeLink' onClick={()=>  nav( "/pagination?pageId=1&name=All") }>  View More Characters </button>
+
         </p>
          
       
-        
-        <Link  className='homeLink' to="/pagination?pageId=1&name=All" > pages </Link> 
+{/*         
+        <Link  className='homeLink' to="/pagination?pageId=1&name=All" > pages </Link>  */}
       </div>
 
     </div>

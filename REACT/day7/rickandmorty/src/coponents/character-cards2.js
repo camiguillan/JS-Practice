@@ -5,7 +5,7 @@ import { useState, useRef } from 'react';
 import { useEffect, createContext } from 'react';
 import axios from 'axios';
 import Characters from './characters';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { Oval } from  'react-loader-spinner';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -20,7 +20,6 @@ function CharacterCards2(props) {
    //creating the list where all the characters will be saved
    const [characters, setCharacters] = useState([]);
    const [pageInfo, setPageInfo] = useState({});
-   const navigate = useNavigate();
    const [isLoading, setIsLoading]  = useState(true);
    var firstPage = useContext(appContext);
    var pageNum = (props.value);
@@ -51,12 +50,7 @@ function CharacterCards2(props) {
       }
     }
 
-  }, [pageNum, filter]);
-
-
-
-
-
+  }, [pageNum]);
 
   async function setNumPages(){
     var url;
@@ -144,7 +138,7 @@ function loadingTimeOut(){
       <charsContextCards2.Provider value={characters} >
       <div className="App">
       {/* <Characters char={characters}></Characters> */}
-      <Characters value= {"chars2" } ></Characters>
+      <Characters value= {"charsPage"+pageNum+filter } ></Characters>
       </div> 
       </charsContextCards2.Provider>
 
