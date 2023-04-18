@@ -51,16 +51,15 @@ function Profile() {
    
 
     useEffect( () => {
-      console.log('usingParams in profile', charId.id)
+        console.log('usingParams in profile', charId.id)
         const url = "https://rickandmortyapi.com/api/character/" + charId.id;
         //console.log(url);
-        getChar(url);
-        //allEpisodes();
-        setIsLoading(false);
-    console.log(firstPage[0][0].id, firstPage[0][firstPage.length].id,
+       
       
-      firstPage[0][charId]);
-          
+
+        getChar(url);
+        setIsLoading(false);
+      
       }, []);
 
 
