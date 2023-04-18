@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link,  useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 //import './Profile.css';
@@ -8,6 +8,7 @@ import '../styless/profile-style.scss';
 import { Navigate, useNavigate, useParams, Route } from 'react-router-dom';
 import { Oval } from  'react-loader-spinner';
 import { useQuery} from "react-query";
+import { appContext } from "../App";
 
 
 //https://rickandmortyapi.com/api/character/2
@@ -29,6 +30,7 @@ function Profile() {
     const [isLoading, setIsLoading]  = useState(true);
     const navigate = useNavigate();
     const charId = useParams();
+    const firstPage = useContext(appContext); 
     //const [butText, setButText] = useState('Show Episodes details');
     //console.log(data);
 
@@ -44,6 +46,8 @@ function Profile() {
 
 
     //const url = "https://rickandmortyapi.com/api/character/" + charId.id;
+
+    
    
 
     useEffect( () => {
@@ -53,8 +57,23 @@ function Profile() {
         getChar(url);
         //allEpisodes();
         setIsLoading(false);
+    console.log(firstPage[0][0].id, firstPage[0][firstPage.length].id,
+      
+      firstPage[0][charId]);
           
       }, []);
+
+
+    // useEffect( () => {
+
+    //   console.log(firstPage[0][0].id, firstPage[0][firstPage.length].id);
+
+    //   if(charId > 0 && charId <= 20){
+    //     setCurrentC(firstPage[0][charId]);
+    //     setIsLoading(false);
+    //   }
+    //   const s =2;
+    // },[]);
     
      async function getChar(url){
        await  axios

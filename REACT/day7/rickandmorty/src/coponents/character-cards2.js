@@ -28,14 +28,15 @@ function CharacterCards2(props) {
      
    //useEffect to fetch api data only one time when it is rendered, passing []
 
-   useEffect( ()=> {
-    setNumPages();
-  },[props.pageInfo, filter]);
+  //  useEffect( ()=> {
+  //   setNumPages();
+  // },[props.pageInfo, filter]);
 
    useEffect(() => {
     //const numPages = props.pageinfo.pages;
     if(pageNum  ){                   
       if(pageNum == 1 && filter === 'All' ){
+        setPageInfo(firstPage[1]);
         setCharacters(firstPage[0]);
         loadingTimeOut();
       }
@@ -66,8 +67,6 @@ function CharacterCards2(props) {
                     await getChars(url);
                    }
                  
-                 
-             
                   }
         break;
       case "Rick": { 
