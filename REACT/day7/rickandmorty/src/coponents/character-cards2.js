@@ -22,7 +22,7 @@ function CharacterCards2(props) {
    const [isLoading, setIsLoading]  = useState(true);
    var firstPage = useContext(appContext);
    var pageNum = (props.value);
-   var pageNumRef = useRef(pageNum);
+   //var pageNumRef = useRef(pageNum);
    var filter = props.filterCode; // filter name 
 
      
@@ -57,7 +57,15 @@ function CharacterCards2(props) {
     switch(filter){
       case "All": {
                    url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
-                   await getChars(url);
+                   if(pageNum == 1){
+                    setPageInfo(firstPage[1]);
+                    setCharacters(firstPage[0]);
+                    loadingTimeOut();
+                   }
+                   else{
+                    await getChars(url);
+                   }
+                 
                  
              
                   }
