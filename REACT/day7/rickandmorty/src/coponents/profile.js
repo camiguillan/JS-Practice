@@ -58,7 +58,7 @@ function Profile() {
       
 
         getChar(url);
-        setIsLoading(false);
+        loadingTimeOut();
       
       }, []);
 
@@ -73,6 +73,14 @@ function Profile() {
     //   }
     //   const s =2;
     // },[]);
+
+    
+function loadingTimeOut(){
+  setTimeout(
+    ()=> setIsLoading(false)
+  ,1000 );
+
+}
     
      async function getChar(url){
        await  axios

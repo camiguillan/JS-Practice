@@ -59,9 +59,10 @@ function CharacterCards2(props) {
       case "All": {
                    url = "https://rickandmortyapi.com/api/character?page=" + pageNum;
                    if(pageNum == 1){
+                    loadingTimeOut();
                     setPageInfo(firstPage[1]);
                     setCharacters(firstPage[0]);
-                    loadingTimeOut();
+                   
                    }
                    else{
                     await getChars(url);

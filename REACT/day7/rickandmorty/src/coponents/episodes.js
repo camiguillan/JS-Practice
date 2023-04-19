@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo, useState} from 'react';
+import React, { useEffect,useContext, useState} from 'react';
 import axios from 'axios';
 import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
 import '../styless/episodes-style.scss';
 import { Oval } from  'react-loader-spinner';
 import { useQuery} from "react-query";
+import { appContext } from '../App';
 
 export default function Episodes() {
   const [episodes, setEpisodes] = useState([]);  
@@ -23,18 +24,46 @@ export default function Episodes() {
   //   episode: []
   // });
 
-  const url = "https://rickandmortyapi.com/api/character/" + charId.id;
-  const {data: currentCharData, status: currentCharStatus} = useQuery("currentChar", () => getData(url));
+  const appChars = useContext(appContext);
 
+  const url = "https://rickandmortyapi.com/api/character/" + charId.id;
+  const {data: currentCharData, status: currentCharStatus} = useQuery("currentChar", async () => {
+                                                                            
+                                                                        // if(charId.Id< appChars[0][0]
+                                                                        //   && charId.Id)
+                                                                        await getData(url)});
+
+  
   useEffect(() => {
-    if (currentCharData && currentCharData.episode && currentCharData.episode.length > 0) {
-      fetchEpisodes(currentCharData.episode);
-    
-    }
-    // else {
-    //   setIsLoading(false);
-    // }
+    console.log(currentCharData);
+    tryGetEps();
+ 
+
   }, [currentCharData]);
+
+    
+  useEffect(() => {
+
+    if(episodes.length> 0){
+      setIsLoading(false);
+    }
+
+
+  }, [currentCharData, episodes.length]);
+
+
+
+
+  async function tryGetEps(){
+    if(currentCharStatus == 'success'){
+      if (currentCharData && currentCharData.episode && currentCharData.episode.length > 0) {
+        await fetchEpisodes(currentCharData.episode);
+        console.log(currentCharData.episode);
+      
+      }
+     } 
+    
+  }
 
   async function getData(url) {
     try {
@@ -63,19 +92,23 @@ export default function Episodes() {
   };
 
   async function fetchEpisodes(episodeUrls) {
-    const episodeIds = episodeUrls.map(url => url.split('/').pop());
+    const episodeIds = episodeUrls.map(url => url.split('/').pop()); //returns last element -> id
+    console.log(episodeIds);
     const url =  "https://rickandmortyapi.com/api/episode/" + episodeIds.join();
-    try {
-      const response = await axios.get(url);
-      setEpisodes(response.data);
-      setIsLoading(false);
-    }
-    catch (error) {
-      console.log(error);
-    }
+    console.log(url);
+
+    await axios
+          .get(url)
+          .then(response =>{
+            const arrEps = [response.data];
+            setEpisodes(arrEps);
+            console.log(arrEps);
+            console.log(episodes.length);
+          })
+          .catch(error => console.log(error));  
   }
 
-  const showEps = episodes.map(ep => {    
+  const showEps = episodes.length > 0 && episodes.map(ep => {    
     return (
       <div key={ep.id} className='divep' >
         <ul className='infoep' >
@@ -89,20 +122,23 @@ export default function Episodes() {
 
   return (
     <>
-      {isloading ? (
+      {isloading ? 
         <div className='ovaldiv'> 
           <Oval className='oval' />
         </div>
-      ) : (
+       : 
+        
         <div className='div-container' >
-          <h1 className='htitle'  >{currentCharData.name}: All episodes</h1>
-          {showEps.length > 0 && showEps}
+        { episodes.length > 0 && <h1 className='htitle'  >{currentCharData.name}: All episodes</h1>}
+          { showEps}
           <div className='divlink'>
             <button className='linkChar' onClick={()=> navigate("/") }> Go Home </button>
             <button className='linkChar' onClick={()=> navigate("/characters/" + currentCharData.id) }>  Go Back </button>
           </div>
         </div>
-      )}
+
+      
+      }
     </>
   );
       }
