@@ -114,10 +114,26 @@
        
       }
     }
-    
+
     @media screen and (max-width: 750px) {
         .header{
-            top: 20%;
+            top: 19.8%;
+
+       
+      }
+    }
+
+    @media screen and (max-width: 600) {
+        .header{
+            top: 15%;
+
+       
+      }
+    }
+    
+    @media screen and (max-width: 500px) {
+        .header{
+            top: 31.5%;
 
        
       }
