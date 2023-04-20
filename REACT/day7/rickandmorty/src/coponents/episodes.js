@@ -27,16 +27,15 @@ export default function Episodes() {
   const appChars = useContext(appContext);
 
   const url = "https://rickandmortyapi.com/api/character/" + charId.id;
-  const {data: currentCharData, status: currentCharStatus} = useQuery("currentChar", async () => {
-                                                                            
-                                                                        // if(charId.Id< appChars[0][0]
-                                                                        //   && charId.Id)
-                                                                        await getData(url)});
-
-  
+  const {data: currentCharData, status: currentCharStatus} = useQuery("currentChar", async () =>await getData(url));
+                                                                                              
   useEffect(() => {
     console.log(currentCharData);
     tryGetEps();
+    
+    if(episodes.length> 0){
+      setIsLoading(false);
+    }
  
 
   }, [currentCharData]);
@@ -47,8 +46,6 @@ export default function Episodes() {
     if(episodes.length> 0){
       setIsLoading(false);
     }
-
-
   }, [currentCharData, episodes.length]);
 
 
@@ -100,17 +97,25 @@ export default function Episodes() {
     await axios
           .get(url)
           .then(response =>{
-            const arrEps = [response.data];
+            var arrEps;           
+            if( response.data.length>0){
+              arrEps = response.data;
+            }
+            else {
+              arrEps = [response.data];
+              
+            }
+            
             setEpisodes(arrEps);
-            console.log(arrEps);
+            console.log(arrEps, response.data.length);
             console.log(episodes.length);
           })
           .catch(error => console.log(error));  
   }
 
-  const showEps = episodes.length > 0 && episodes.map(ep => {    
+  const showEps = episodes.length > 0 && episodes.map((ep,index) => {    
     return (
-      <div key={ep.id} className='divep' >
+      <div key={index} className='divep' >
         <ul className='infoep' >
           <li>Episode: {ep.episode}</li>
           <li>Episode Name: {ep.name}</li>
