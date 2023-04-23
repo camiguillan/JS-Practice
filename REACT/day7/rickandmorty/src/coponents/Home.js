@@ -74,11 +74,12 @@ function Home() {
        
         <p className='homeP' > 
         <br></br>
-        Click to see all Rick and Morty's Characters
+        Click to see all Rick and Morty's Characters    </p>
         {/* <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button> */}
-        <button className='homeLink' onClick={()=>  nav( "/pagination?pageId=1&name=All") }>  View More Characters </button>
+        {/*<button className='homeLink' onClick={()=>  nav( "/pagination?pageId=1&name=All") }>  View More Characters </button>*/}
+        <button className="btn btn-primary btn-lg" onClick={()=>  nav( "/pagination?pageId=1&name=All") }>  View More Characters    </button>
 
-        </p>
+     
          
       
 {/*         

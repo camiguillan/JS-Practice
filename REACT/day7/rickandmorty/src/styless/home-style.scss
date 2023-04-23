@@ -1,6 +1,13 @@
 @import './app-style-variables.scss';
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+//https://getbootstrap.com/docs/5.3/components/buttons/
 
 body{
+
+  
+
+
     align-items: center;
     background-color: $pale-green-color;
     //overflow-x: hidden; 
@@ -52,6 +59,25 @@ body{
         color: $dark-green-color;
         background-color: $light-green-color;
     }
+
+
+
+  
+
+    .btn {
+      
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var($green-color);
+        --bs-btn-border-color: var($green-color);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #{shade-color($light-green-color, 10%)};
+        --bs-btn-hover-border-color: #{shade-color($light-green-color, 10%)};
+        --bs-btn-focus-shadow-rgb: var($light-green-color);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #{shade-color($green-color, 20%)};
+        --bs-btn-active-border-color: #{shade-color($green-color, 20%)};
+      }
 }
 
 
@@ -59,7 +85,7 @@ body{
     font-size: 150%;
     font-family: $segoe-font;
     width: 50%;
-    margin: 1% 25% 1%;
+    margin: 1% 25% 2%;
     height: 1%;
     margin-bottom: 1%;
 }
