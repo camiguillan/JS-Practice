@@ -70,10 +70,10 @@ function Home() {
 
       
 
-        <div  className='homeDiv' >
+        <div  className='homeDiv2' >
        
         <p className='homeP' > 
-        <br></br>
+   
         Click to see all Rick and Morty's Characters    </p>
         {/* <button className='homeLink' onClick={()=>  nav("/characters") }>  View More Characters </button> */}
         {/*<button className='homeLink' onClick={()=>  nav( "/pagination?pageId=1&name=All") }>  View More Characters </button>*/}

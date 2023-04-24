@@ -1,8 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
-import {charsContext} from "./character-cards";
-import {charsContextHome} from "./home";
 import { charsContextCards2 } from "./character-cards2";
 import { appContext } from "../App";
 import { useEffect, useState} from 'react';
@@ -52,7 +50,7 @@ return (
              characters.map(
                 ( char, index) => 
                 <div key={index} className="column">
-                     <div  className="card"   id={char.id.toString()}  onClick={handleClick}  >
+                     <div  className="cardProfile"   id={char.id.toString()}  onClick={handleClick}  >
                          <img src={char.image} alt='' ></img>
                          <h5> {char.name} </h5>
                          <div className="cinfo" >

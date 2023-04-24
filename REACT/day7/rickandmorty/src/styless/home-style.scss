@@ -42,7 +42,16 @@ body{
         color: $dark-green-color; 
         margin: 0.5%; 
     }
-    
+}
+
+.homeDiv2{
+    margin: 1% auto 1% ;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+
+
+
     .homeLink{
         color: $white-color;
         background-color:$green-color;
@@ -60,10 +69,6 @@ body{
         background-color: $light-green-color;
     }
 
-
-
-  
-
     .btn {
       
         --bs-btn-font-weight: 600;
@@ -79,8 +84,8 @@ body{
         --bs-btn-active-bg: #{shade-color($green-color, 20%)};
         --bs-btn-active-border-color: #{shade-color($green-color, 20%)};
       }
-}
 
+}
 
 .homeP{ /*Paragraph of the home page*/
     font-size: 150%;
