@@ -13,12 +13,7 @@
 
 
     .h1Profile{
-        font-family: $franklin-font;
-        font-size: 70px;
-        color: $dark-green-color;
-        padding: 0 0 0 0 ;
-        text-align: center;
-        margin: 1%;
+         @include headerTitles
     }
 
     .divlink{
@@ -37,10 +32,10 @@
             box-sizing: border-box;
             border-radius: $five-radius;
             border:none;
+            transition: $two-secs-transition;
         
             &:hover{
-               transition: $two-secs-transition;
-                background-color: $dark-green-color;
+               @include hoverNavButtons;
             }
             
         }
@@ -65,19 +60,10 @@
         }
     
         button {
+     
+            @include navButtons;
             padding: 10px;
-            font-size: 100%;
-            border: none;
-            border-radius: $five-radius;
-            background-color: $moss-green-color;
-            color: $white-color;
-            cursor:$pointer-cursor;
-            transition: $two-secs-transition;
             margin: 5%;
-            height: 30%;
-            box-shadow:$shadow;
-            font-family: $segoe-font;
-            font-size: 100%;
 
             &:hover{
                 background-color: $pale-green-color;
@@ -99,7 +85,5 @@
         }
     }
 
-
-    
 
 }

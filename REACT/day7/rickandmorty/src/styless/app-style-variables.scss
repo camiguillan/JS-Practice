@@ -24,3 +24,55 @@ $two-secs-transition: background-color 0.2s ease;
 $align-margin: 2% auto 1% ;
 $shadow: 0 4px 8px 0 $black-color;
 
+
+
+//MIXES
+@mixin centerItems{
+    margin: 1% auto 1% ;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+
+@mixin headerTitles{
+    font-family: $franklin-font;
+    font-size: 400%;
+    color: $dark-green-color; 
+    margin: 0%; 
+}
+
+@mixin bodyConfig{
+    align-items: center;
+    background-color: $pale-green-color;
+
+}
+
+
+@mixin navButtons{
+    padding: 0.5%;
+    font-size: 100% ;
+    border: none;
+    border-radius: $five-radius;
+    background-color: $moss-green-color;
+    color: $dark-grey-color;
+    cursor:$pointer-cursor;
+    margin: 1%;
+    margin-top: 0.1%;
+    height: 30%;
+    box-shadow:$shadow;
+    box-sizing: border-box;
+}
+
+@mixin hoverNavButtons{
+    background-color: $dark-green-color;
+    color: $white-color;
+
+}
+
+@mixin pagStyles($margin){
+    margin: $margin;
+    margin-bottom: 1.5%;
+    color: $black-color;
+
+}

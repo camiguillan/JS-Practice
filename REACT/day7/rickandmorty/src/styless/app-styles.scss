@@ -1,9 +1,10 @@
 @import './app-style-variables.scss';
 
 body{
-    align-items: center;
-    background-color: $pale-green-color;
+    // align-items: center;
+    // background-color: $pale-green-color;
     //overflow-x: hidden; 
+    @include bodyConfig;
 }
 
 .ovaldiv{
@@ -23,6 +24,8 @@ body{
     text-align: center;
     top: 50%;
 }
+
+
 
 
 

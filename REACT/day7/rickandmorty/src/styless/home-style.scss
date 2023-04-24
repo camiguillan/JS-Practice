@@ -4,13 +4,10 @@
 //https://getbootstrap.com/docs/5.3/components/buttons/
 
 body{
-
-  
-
-
-    align-items: center;
-    background-color: $pale-green-color;
+    // align-items: center;
+    // background-color: $pale-green-color;
     //overflow-x: hidden; 
+    @include bodyConfig;
 }
 
 // .pagination {
@@ -31,25 +28,28 @@ body{
 
 /*HOME STYLING*/
 .homeDiv{
-    margin: 2% auto 1% ;
-    width: 100%;
-    text-align: center;
-    align-items: center;
+    // margin: 2% auto 1% ;
+    // width: 100%;
+    // text-align: center;
+    // align-items: center;
+
+    @include centerItems;
 
     .homeH1{
-        font-family: $franklin-font;
-        font-size: 400%;
-        color: $dark-green-color; 
-        margin: 0.5%; 
+        // font-family: $franklin-font;
+        // font-size: 400%;
+        // color: $dark-green-color; 
+        // margin: 0.5%; 
+        @include headerTitles;
     }
 }
 
 .homeDiv2{
-    margin: 1% auto 1% ;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-
+    // margin: 1% auto 1% ;
+    // width: 100%;
+    // text-align: center;
+    // align-items: center;
+    @include centerItems;
 
 
     .homeLink{
