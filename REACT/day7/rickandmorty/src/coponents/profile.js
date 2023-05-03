@@ -35,45 +35,19 @@ function Profile() {
     //console.log(data);
 
 
-//     function queryChar(url){
-//        const {data, status} = useQuery("currentC", getChar(url));
-//     if(status == "success"){
-//       setCurrentC(data);
-//       setIsLoading(false);
-// }
-  
-//     }
-
-
-    //const url = "https://rickandmortyapi.com/api/character/" + charId.id;
-
-    
-   
+ 
 
     useEffect( () => {
         console.log('usingParams in profile', charId.id)
         const url = "https://rickandmortyapi.com/api/character/" + charId.id;
         //console.log(url);
-       
-      
-
         getChar(url);
         loadingTimeOut();
       
       }, []);
 
 
-    // useEffect( () => {
-
-    //   console.log(firstPage[0][0].id, firstPage[0][firstPage.length].id);
-
-    //   if(charId > 0 && charId <= 20){
-    //     setCurrentC(firstPage[0][charId]);
-    //     setIsLoading(false);
-    //   }
-    //   const s =2;
-    // },[]);
-
+ 
     
 function loadingTimeOut(){
   setTimeout(
