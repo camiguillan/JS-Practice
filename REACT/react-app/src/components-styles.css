@@ -114,3 +114,18 @@ option:checked {
     color: rgb(55, 255, 0);
   }
 
+button{
+    background-color: rgb(222, 207, 238);
+    width: 80%;
+    border-radius: 5%;
+    margin: 2%;
+    border: solid;
+    border-color: blueviolet;
+
+}
+
+button:hover{
+    background-color: blueviolet;
+    color: azure;
+}
+
