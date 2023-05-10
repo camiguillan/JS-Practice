@@ -1,7 +1,17 @@
 import React from 'react'
 import './components-styles.css';
+import { useState } from 'react';
 
 export default function Components() {
+  const [fruit, setFruit] = useState();
+
+
+  function handleChange(event){
+    console.log(event, event.target, event.target.value);
+    setFruit(event.target.value);
+
+  }
+
   return (
     <div className='cont'>
         <h1>An interesting app</h1>
@@ -11,9 +21,20 @@ export default function Components() {
             <p>!</p>
         </div>   
         <div className='events'>
-            <input class="red-input" value="I'll be red when focused." />
+            <input className="red-input" value="I'll be red when focused." />
             
-          
+            <div className='select' >
+
+              <select name="my-select" id="fruit"  onChange={handleChange}>
+              <option value="Apples">Apples</option>
+              <option value="Grapes">Grapes</option>
+              <option value="Pears">Pears</option>
+              </select>
+
+              <p> {fruit} </p>
+
+              </div>
+
             <div className='yes-no'>
               <input type="radio" name="my-input" id="yes" value="yes" />
               <label for="yes">Yes</label>
@@ -27,7 +48,7 @@ export default function Components() {
               <label for="opt-in">Check me!</label>
             </div>
 
-      
+          
 
         </div>         
     </div>
