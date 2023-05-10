@@ -1,11 +1,17 @@
 .cont{
-    margin: 10%;
+    margin: 15%;
+    margin-left: 25%;
     border-width: 1%;
     border-color: rgb(43, 137, 226);
     border-style: solid;
-    position: absolute;
-    display: block;
+    position: relative; /*can manipulate height, width, left, top....*/
+    display: grid;
+    grid-template-rows: auto;
+    justify-items: center;
     align-items: center; /*it does not work with block display*/
+    width: 50%;
+
+
 }
 
 
@@ -14,6 +20,55 @@
     border-color: blueviolet;
     width: 50%;
     background-color: rgb(178, 141, 212);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
     border-style: solid;
     margin: 5%;
+    padding: 2%;
+    font-size: 100%;
 }
+
+h1{
+    padding: 1%;
+    border: solid;
+    border-color: rgb(174, 57, 166);
+    margin: 1%;
+}
+
+.events{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid;
+    justify-content: space-evenly;
+    border-color: rgb(93, 165, 42);
+    width: 100%;
+    margin: 2%;
+}
+
+.red-input{
+    margin: 2%;
+}
+
+.red-input:focus {
+    background: rgb(211, 176, 176);
+    color: red;
+  }
+
+.yes-no{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    margin: 1%;
+
+    
+}
+
+.check{
+    width: 100%;
+
+}
+
