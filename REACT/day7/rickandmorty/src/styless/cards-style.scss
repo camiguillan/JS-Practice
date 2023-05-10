@@ -6,11 +6,11 @@
     // padding: 1%;
       //position: sticky;
       position:sticky;
-      top: 25.5%;
-      height: 20%;
+      top: 23%;
+      height: 25%;
       width: 100%;
       text-align: center;
-      background-color: $light-green-color;
+      background-color: $pale-green-color;
       padding-top: 1%;
      
       nav{
@@ -42,33 +42,7 @@
           & .pagination {
             margin: 0.5% 36% 0.5% ;
             margin-bottom: 1.5%;
-            //color: $black-color;
-            
-            // &.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-            //     background-color: rgb(117, 190, 201);
-            // }
-
-            
-
-            // * .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
-            
-            //     -webkit-tap-highlight-color: #915f5f;
-            //    // background-color: $moss-green-color;
-            // }
-
-            // button{
-            //     background-color: $moss-green-color;
-            
-
-            // &:hover {
-            //       background-color: $dark-green-color;
-            //       color: $white-color;
-            // }
-
-            // }
-
-
-           
+               
           }
 
 
