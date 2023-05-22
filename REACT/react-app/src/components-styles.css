@@ -1,12 +1,12 @@
+
 .cont{
     margin: 15%;
-    margin-left: 25%;
+    margin-left: 20%;
     border-width: 1%;
     border-color: rgb(43, 137, 226);
     border-style: solid;
     position: relative; /*can manipulate height, width, left, top....*/
     display: grid;
-    grid-template-rows: auto;
     justify-items: center;
     align-items: center; /*it does not work with block display*/
     width: 60%;

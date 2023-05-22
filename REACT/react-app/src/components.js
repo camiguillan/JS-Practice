@@ -7,7 +7,6 @@ export default function Components() {
 
 
   function handleChange(event){
-    console.log(event, event.target, event.target.value);
     setFruit(event.target.value);
 
   }

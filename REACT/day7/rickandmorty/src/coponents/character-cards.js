@@ -22,16 +22,9 @@ function CharacterCards() {
 
    //path='/characters/?page=:pageId
    const page = useParams();
-
-
- 
-
-
    
    //useEffect to fetch api data only one time when it is rendered, passing []
    useEffect(() => {
-     //getting all characters 
-     // const url = "https://rickandmortyapi.com/api/character?page=" + page.pageId ;
      const url = "https://rickandmortyapi.com/api/character";
      getChars(url);
        
@@ -45,7 +38,6 @@ function CharacterCards() {
            // console.log(getChars);
            setPageInfo(response.data.info);
            // console.log(characters);
-          
            setCharacters(getChars);
            setIsLoading(false);
            // console.log(nextInfo);

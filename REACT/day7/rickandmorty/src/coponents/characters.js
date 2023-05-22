@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { useNavigate, Navigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { charsContextCards2 } from "./character-cards2";
 import { appContext } from "../App";
 import { useEffect, useState} from 'react';
@@ -12,7 +12,6 @@ function Characters(props){
     const charId = useParams();
      const chars = useContext(charsContextCards2);
     const [characters, setCharacters] = useState([]);
-    const [isLoading, setIsLoading]  = useState(true);
 
     // use this to show first 3 chars in Home page 
     //use this to show firs page in characters page 

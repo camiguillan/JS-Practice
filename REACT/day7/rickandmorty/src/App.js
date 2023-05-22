@@ -36,81 +36,33 @@ export const appContext = createContext();
 
 function App() {
   const queryclient = new QueryClient();
-  const nav = useNavigate();
   const [characters, setCharacters] = useState([]);
   const [pageInfo, setPageInfo] = useState({});
   const [isLoading, setIsLoading]  = useState(true);
   const url = "https://rickandmortyapi.com/api/character";
 
 
-  //useEffect to fetch api data only one time when it is rendered, passing []
-  // useEffect( () => {
-  //   //getting all characters 
- 
-  //   fetchData(url);
-
-  // }, []);
-
-
-  // useEffect( () => {
-  //   const data = fetchInfo(url);
-  //   setCharacters(data.results)
-  //   setPageInfo(data.info);
-  //   console.log(characters, pageInfo);
-  //   if(characters){
-  //     setIsLoading(false);
-      
-  //   }
-
-
-  // }, [characters, pageInfo]);
-
-
   useEffect(() => {
-    async function fetchData() {
-      const data = await getChars(url);
-      setCharacters(data.results);
-      setPageInfo({
-        count: data.info.count,
-        pages: data.info.pages,
-        next: data.info.next,
-        prev: data.info.prev,
-      });
-      setIsLoading(false);
-    }
+   
     fetchData();
   }, []);
+
+  async function fetchData() {
+    const data = await getChars(url);
+    setCharacters(data.results);
+    setPageInfo({
+      count: data.info.count,
+      pages: data.info.pages,
+      next: data.info.next,
+      prev: data.info.prev,
+    });
+    setIsLoading(false);
+  }
   
   useEffect(() => {
     setIsLoading(false);
   }, [characters, pageInfo]);
   
-
-
-  async function fetchInfo(url){
-    const data =  await getChars(url);
-    return data;
-
-  }
-
-
-
-  async function fetchData(url){
-    const data =  await getChars(url);
-    //const chars = await getChars(url);
-    setCharacters(data.results);
-    //console.log(characters)
-    //console.log(data.info);
-    setPageInfo({
-        count: data.info.count,
-        pages: data.info.pages,
-        next: data.info.next,
-        prev: data.info.prev
-    }
-  );
-    //console.log(pageInfo);
-   
-  }
 
 
   async function getChars(url){
@@ -119,10 +71,6 @@ function App() {
         .get(url)
         .then(response => {
           chars = response.data;
-          //setPageInfo(response.data.info);
-          //setPageInfo(response.data.info);
-          //console.log(chars);
-          //console.log(pageInfo);
                   })
         .catch(error => console.log(error));  
 
@@ -130,15 +78,9 @@ function App() {
 
   }
 
-
-
-// path='/characters/?page=:pageId
   return (
 
     <> 
-
-
-
 
    {  isLoading?
 
@@ -158,8 +100,6 @@ function App() {
       {/* <Route path='/characters?pagenum=:pageId' element= {<CharacterCards2 />} /> */}
       <Route path="/characters/:id" element={<Profile />} />       
        <Route path="/characters/:id/episodes" element={<Episodes />} />  
-
-    
 
        <Route path="/" element= {<Home />} />       
        <Route path='*' element={ <Navigate to="/" /> }/>
