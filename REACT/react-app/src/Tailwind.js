@@ -1,8 +1,8 @@
 import React from 'react';
-import './Tailwind.scss'
+import './Tailwind.css'
 
 export default function Tailwind() {
   return (
-    <div>Tailwind</div>
+    <div className='bg-red-500'>Tailwind</div>
   )
 }
