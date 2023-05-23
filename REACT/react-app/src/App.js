@@ -1,12 +1,13 @@
 import './App.scss';
-import Components from './components';
+import Tailwind from './Tailwind';
+//import Components from './components';
 
 
 function App() {
   return (
     
   <div>
-      <Components/>
+      <Tailwind/>
   </div>
    
   );
