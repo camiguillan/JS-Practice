@@ -52,11 +52,15 @@ body{
   color: #fff;
   padding: 20px;
   text-align: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  height: 60px;
+  transition: opacity 3s ease-in-out, height 3s ease;
 }
 
-.fade-in {
-  opacity: 1;
+.shrink{
+  height: 0;
+  transform: scaleY(0);
+  opacity: 0;
+  
 }
 

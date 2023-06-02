@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import './App.css';
 
 
 function AnimationExample() {
     const [show, setShow] = useState(false);
   
-    useEffect(() => {
-      setShow(true);
-    }, []);
-  
+ 
     return (
-      <div className={`box ${show ? 'fade-in' : ''}`}>
+      <div className={`box ${show ? 'shrink' : ''}`} onClick={() => setShow(true)}>
         <h1>Hello, world!</h1>
       </div>
     );

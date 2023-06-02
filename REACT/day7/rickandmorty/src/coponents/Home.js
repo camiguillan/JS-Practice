@@ -65,8 +65,6 @@ function Home() {
          <h1 className='homeH1'>  RICK AND MORTY </h1> 
         <Characters value = {"home"} ></Characters>
       </div>
- 
-        
 
       
 
